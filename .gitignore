@@ -1,0 +1,5 @@
+lean/.lake/
+verify/verify_finite
+verify/ladder_certs.json
+__pycache__/
+*.pyc
