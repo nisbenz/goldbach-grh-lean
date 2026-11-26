@@ -1,3 +1,10 @@
+> **Coordinated attack framework (2026-11-27).** A local, verifier-first attack system now lives in
+> [`attack/`](attack/) with the binding agent protocol at [`AGENTS.md`](AGENTS.md): a claim/blocker
+> map, a lease desk, a kernel-checker (including a vendored Apache-2.0 checker with attribution),
+> arXiv news monitoring, a dashboard, and a failure log. Binary Goldbach is still OPEN; the
+> framework records 11 checker-verified micro-results and 11 open blockers. See AGENTS.md §9 for
+> the blocker handoff.
+
 # goldbach-grh-lean
 
 Explicit GRH-conditional proofs, `sorry`-free Lean 4 (`v4.16.0` + Mathlib) formalizations, and independent 60-digit interval-arithmetic & computational verifiers for:
