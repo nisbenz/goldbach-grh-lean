@@ -1,0 +1,317 @@
+[
+  {
+    "id": "C01",
+    "statement": "Lean pinned to leanprover/lean4:v4.16.0 with Mathlib rev a6276f4c6097675b1cf5ebd49b1146b735f38c02 (input v4.16.0)",
+    "status": "CHECKED",
+    "hypothesis": "none",
+    "evidence": "read lean/lean-toolchain, lean/lakefile.toml, lean/lake-manifest.json; lake --version in scratch copy exit 0: Lake 5.0.0-128a1e6 (Lean 4.16.0)",
+    "source_file": "lean/lean-toolchain; lean/lakefile.toml; lean/lake-manifest.json",
+    "notes": "8 manifest packages incl. inherited deps; pin itself is source-level only."
+  },
+  {
+    "id": "C02",
+    "statement": "Lean sources contain zero sorry tokens in code",
+    "status": "CHECKED",
+    "hypothesis": "none",
+    "evidence": "grep -rniI --include='*.lean' sorry lean/ exit 0: 4 token hits, all in comments; code count 0",
+    "source_file": "lean/WeakGoldbach/*.lean",
+    "notes": "Literal token claim only; does not imply axiom-free."
+  },
+  {
+    "id": "C03",
+    "statement": "The Lean formalization is zero-axiom (comments in Analytic/BinaryExceptional/Core/Main)",
+    "status": "REFUTED",
+    "hypothesis": "none",
+    "evidence": "grep -rn '^axiom ' lean/ exit 0: 17 axiom declarations (5 Analytic, 10 BinaryExceptional, 2 Main)",
+    "source_file": "lean/WeakGoldbach/Analytic.lean:45,63,272; BinaryExceptionalCore.lean:117,200; BinaryExceptional.lean:11,97; Main.lean:28",
+    "notes": "May be intended only of selected helper lemmas; false for final theorems."
+  },
+  {
+    "id": "C04",
+    "statement": "lake build passes with zero sorries and a #print axioms audit",
+    "status": "UNVERIFIED",
+    "hypothesis": "Lean v4.16.0 plus Mathlib cache",
+    "evidence": "timeout 300 lake exe cache get exit 124; timeout 90 lake -v exe cache get exit 124; lake build not run",
+    "source_file": "README.md:19,36-37",
+    "notes": "Mathlib cache never obtained; no build output observed."
+  },
+  {
+    "id": "C05",
+    "statement": "#print axioms output contains only propext/Classical.choice/Quot.sound",
+    "status": "UNVERIFIED",
+    "hypothesis": "a successful lake build",
+    "evidence": "grep found #print axioms at Main.lean:40 and BinaryExceptional.lean:274-275; no output observed",
+    "source_file": "lean/WeakGoldbach/Main.lean; lean/WeakGoldbach/BinaryExceptional.lean",
+    "notes": "Static axiom declarations imply custom axiom names would appear."
+  },
+  {
+    "id": "C06",
+    "statement": "threshold_inequality over R for all N >= 10^22 gives coefficient > 0.083",
+    "status": "UNVERIFIED",
+    "hypothesis": "kernel elaboration (no build performed)",
+    "evidence": "source read Analytic.lean:275-419; lake build not run",
+    "source_file": "lean/WeakGoldbach/Analytic.lean",
+    "notes": "No new axiom declared in this lemma; commended as axiom-free in comment only."
+  },
+  {
+    "id": "C07",
+    "statement": "isSumOfThreePrimes_of_R_prime_pos: R_prime N > 0 implies IsSumOfThreePrimes N",
+    "status": "UNVERIFIED",
+    "hypothesis": "kernel elaboration",
+    "evidence": "source read Analytic.lean:46-58; lake build not run",
+    "source_file": "lean/WeakGoldbach/Analytic.lean",
+    "notes": "Finite-sum argument, axiom-free in source."
+  },
+  {
+    "id": "C08",
+    "statement": "prime_of_lucas_trace is a zero-axiom soundness proof for Pratt certificates",
+    "status": "UNVERIFIED",
+    "hypothesis": "kernel elaboration; Mathlib lucas_primality",
+    "evidence": "source read Pratt.lean:77-111; lake build not run",
+    "source_file": "lean/WeakGoldbach/Pratt.lean",
+    "notes": "Lean theorem distinct from Python certificate verification."
+  },
+  {
+    "id": "C09",
+    "statement": "weakGoldbach_complete glues BinaryGoldbachUpTo B + PrimeLadder + WeakGoldbachFrom N0 into WeakGoldbachConjecture",
+    "status": "UNVERIFIED",
+    "hypothesis": "its three explicit arguments",
+    "evidence": "source read PrimeLadder.lean:80-87; lake build not run",
+    "source_file": "lean/WeakGoldbach/PrimeLadder.lean",
+    "notes": "An implication theorem; Main.lean supplies its assumptions as axioms."
+  },
+  {
+    "id": "C10",
+    "statement": "weak_goldbach_theorem : WeakGoldbachConjecture (every odd n >= 7 is three primes)",
+    "status": "CONDITIONAL",
+    "hypothesis": "axioms binaryGoldbach_4e18, certified_prime_ladder_1e22, grh_arc_error_bound, major_arc_main_term_lower_bound, prime_power_subtraction_bound, R_total, M_coeff; GRH only in informal comments",
+    "evidence": "source read Main.lean:33-38; lake build not run",
+    "source_file": "lean/WeakGoldbach/Main.lean; lean/WeakGoldbach/Analytic.lean",
+    "notes": "The Lean theorem has no GRH hypothesis; it is unconditional in a theory with new axioms."
+  },
+  {
+    "id": "C11",
+    "statement": "binary_goldbach_exceptional_bound E(X) <= 2,000,000 sqrt(X) log(X)^3 for all X >= 4, plus density-one corollary",
+    "status": "CONDITIONAL",
+    "hypothesis": "binaryGoldbach_4e18 and 10 axioms in BinaryExceptional.lean, justified informally by GRH Lemmas 1-5",
+    "evidence": "source read BinaryExceptional.lean:100,245,269,274-275; lake build not run",
+    "source_file": "lean/WeakGoldbach/BinaryExceptional.lean; README.md:6-8",
+    "notes": "Not pointwise Goldbach; E(X)/X -> 0 only."
+  },
+  {
+    "id": "C12",
+    "statement": "global_bound_of_dyadic_sqrt_log and density_one_of_sqrt_log_bound are axiom-free combinatorial lemmas",
+    "status": "UNVERIFIED",
+    "hypothesis": "kernel elaboration; Mathlib standard axioms",
+    "evidence": "source read BinaryExceptionalCore.lean:121-198,203-243; lake build not run",
+    "source_file": "lean/WeakGoldbach/BinaryExceptionalCore.lean",
+    "notes": "Source declares no new axioms."
+  },
+  {
+    "id": "C13",
+    "statement": "verify_bounds.py verifies every weak-proof constant and inequality with rigorous 60-digit interval arithmetic",
+    "status": "CHECKED",
+    "hypothesis": "hardcoded analytic inputs assumed; literal execution",
+    "evidence": "python3 verify/verify_bounds.py exit 0; final line ALL ANALYTIC CONSTANTS AND INEQUALITIES VERIFIED WITH RIGOROUS INTERVAL BOUNDS!",
+    "source_file": "verify/verify_bounds.py",
+    "notes": "Checks numeric inequalities only; some parametric checks use float grids (check_lemma1); no GRH/explicit-formula verification."
+  },
+  {
+    "id": "C14",
+    "statement": "verify_binary_bounds.py verifies every binary-proof constant and inequality with 60-digit intervals",
+    "status": "CHECKED",
+    "hypothesis": "hardcoded inputs assumed; literal execution",
+    "evidence": "python3 verify/verify_binary_bounds.py exit 0; final line ALL BINARY GOLDBACH EXCEPTIONAL-SET CONSTANTS AND INEQUALITIES VERIFIED!",
+    "source_file": "verify/verify_binary_bounds.py",
+    "notes": "Checks constants such as C <= 1399827.57 < 2,000,000; not Lemmas 1-5."
+  },
+  {
+    "id": "C15",
+    "statement": "verify_finite.cpp compiles with g++ -O3 -std=c++17 -pthread",
+    "status": "CHECKED",
+    "hypothesis": "none",
+    "evidence": "g++ -O3 -std=c++17 -pthread verify/verify_finite.cpp -o /tmp/opencode/goldbach_audit/verify_finite exit 0 (23560-byte binary)",
+    "source_file": "verify/verify_finite.cpp",
+    "notes": "Program not run; 1e9 binary and 1e12 weak verification NOT executed."
+  },
+  {
+    "id": "C16",
+    "statement": "Ladder has 2,501 rungs, 13,197 unique Pratt-certified primes, p0=3999999999999999887, p_last=10003999999999999876777, max gap B-4",
+    "status": "CHECKED",
+    "hypothesis": "Pratt/Lucas criterion as implemented",
+    "evidence": "python3 /tmp/opencode/goldbach_audit/check_ladder.py exit 0: all_rung_certs_verified True, unique_primes_verified 13197, gaps_ok True",
+    "source_file": "verify/ladder_certs.json.gz; verify/verify_ladder.py",
+    "notes": "Checks primality certificates and ladder geometry only; not binary Goldbach to 4e18; checker is Python, not Lean."
+  },
+  {
+    "id": "C17",
+    "statement": "Every odd N >= 10^22 is a sum of three primes (weak proof, Theorem)",
+    "status": "CONDITIONAL",
+    "hypothesis": "GRH for all primitive Dirichlet L-functions incl. zeta; BMOR/Backlund zero counts; Rosser-Schoenfeld; product certificate; finite verification to 4e18",
+    "evidence": "read proof/weak_goldbach_proof.md; no machine check of analytic lemmas",
+    "source_file": "proof/weak_goldbach_proof.md",
+    "notes": "Full conjecture additionally needs the prime ladder."
+  },
+  {
+    "id": "C18",
+    "statement": "E(X) <= 2,000,000 sqrt(X) log(X)^3 for all real X >= 4; E(X)/(X/2) -> 0",
+    "status": "CONDITIONAL",
+    "hypothesis": "GRH for all primitive Dirichlet chars incl. conductor 1; primitive-character inequality (1); product certificate; Rosser-Schoenfeld; finite verification to 4e18",
+    "evidence": "read proof/binary_goldbach_exceptional_proof.md; no machine check of Lemmas 1-5",
+    "source_file": "proof/binary_goldbach_exceptional_proof.md",
+    "notes": "Exceptional-set/density result, not pointwise."
+  },
+  {
+    "id": "C19",
+    "statement": "Pointwise Strong Goldbach remains open even under GRH",
+    "status": "CHECKED",
+    "hypothesis": "none (this is the repo's own stated conclusion)",
+    "evidence": "README.md:8; strong_goldbach_research.md:3,212-214; persistent_push.md:326-331 read",
+    "source_file": "README.md; proof/strong_goldbach_research.md; proof/strong_goldbach_persistent_push.md",
+    "notes": "Not a theorem of independence from GRH."
+  },
+  {
+    "id": "C20",
+    "statement": "H1/H2/H3 one-sided reductions prove all-even Goldbach assuming each signed inequality plus finite verification",
+    "status": "CONDITIONAL",
+    "hypothesis": "Dirichlet GRH (H1,H2) or RH (H3); H1 F_N(T\\A) >= -0.764480N; H2 F_N(T\\A_y) > -NJ(T_y)D_H(N)+Nd_y+b_N; H3 U_N >= -(1-1.05e-7)kappa N; finite verification to 4e18",
+    "evidence": "read strong_goldbach_research.md:24-44,84-95,197-208; no machine check",
+    "source_file": "proof/strong_goldbach_research.md",
+    "notes": "H1/H2/H3 explicitly unproved in the repo."
+  },
+  {
+    "id": "C21",
+    "statement": "Parity countermodel a_n^plus/minus matches divisor tests to every fixed level < 1 yet has no primes",
+    "status": "CONDITIONAL",
+    "hypothesis": "RH estimate sum lambda(m) << t^(1/2+eta); fixed eta<1/4; squarefree d coprime to N",
+    "evidence": "read strong_goldbach_research.md:120-172; no independent re-derivation",
+    "source_file": "proof/strong_goldbach_research.md",
+    "notes": " countermodel to specified sieve deductions only."
+  },
+  {
+    "id": "C22",
+    "statement": "Fourier reflection-hole counterexample in Z/MZ with zero target convolution and small nonzero coefficients",
+    "status": "UNVERIFIED",
+    "hypothesis": "probabilistic construction; no GRH model claimed",
+    "evidence": "read strong_goldbach_research.md:182 and persistent_push.md:305-322; no code run",
+    "source_file": "proof/strong_goldbach_research.md; proof/strong_goldbach_persistent_push.md",
+    "notes": "Obstruction test, not a GRH countermodel."
+  },
+  {
+    "id": "C23",
+    "statement": "Pointwise O_epsilon(N^(3/4+epsilon)) for smooth reflected d_2,d_2 sum",
+    "status": "UNVERIFIED",
+    "hypothesis": "claimed unconditional via divisor Voronoi + Weil",
+    "evidence": "read strong_goldbach_erh_attack.md:37-71; no independent check",
+    "source_file": "proof/strong_goldbach_erh_attack.md",
+    "notes": "Does not transfer to Lambda coefficients."
+  },
+  {
+    "id": "C24",
+    "statement": "Automorphic parity survival theorem (7): prime-free model passes fixed GL_r tests at levels < 1",
+    "status": "CONDITIONAL",
+    "hypothesis": "fixed tempered cuspidal GL_r; automorphic RH; temperedness; fixed-degree Lindelof; finite-place Ramanujan and archimedean spectral gap",
+    "evidence": "read strong_goldbach_erh_attack.md:126-147; no machine check",
+    "source_file": "proof/strong_goldbach_erh_attack.md",
+    "notes": "No Chebotarev test on reflected coordinate."
+  },
+  {
+    "id": "C25",
+    "statement": "z=N^(2/9) marked-divisor one-sided reduction: H(N) <= (f_*-eps)N V_N(z) implies positive prime-pair weight",
+    "status": "CONDITIONAL",
+    "hypothesis": "Dirichlet GRH; lower linear sieve D=sqrt(N)/log^10 N; unproved bias bound on H(N)",
+    "evidence": "read strong_goldbach_erh_attack.md:149-184; no machine check",
+    "source_file": "proof/strong_goldbach_erh_attack.md",
+    "notes": "f_* = (8 e^gamma/9) log(5/4)."
+  },
+  {
+    "id": "C26",
+    "statement": "Chen-set one-sided reduction: count >= (c S(N) N/L^2 - B_C(N))/2",
+    "status": "CONDITIONAL",
+    "hypothesis": "quantitative Chen theorem; unproved limsup B_C(N)L^2/(S(N)N) < c; explicit c,N0 not derived",
+    "evidence": "read strong_goldbach_erh_attack.md:186-198; no machine check",
+    "source_file": "proof/strong_goldbach_erh_attack.md",
+    "notes": "No finite bridge to 4e18."
+  },
+  {
+    "id": "C27",
+    "statement": "GWX ratios theorem G(N)=N S(N)+O(N^(1-omega_D+eps))",
+    "status": "CONDITIONAL",
+    "hypothesis": "GWX Hypothesis 1.1 (arXiv:2611.18825v1): conjugate chars, 0<omega_D<=1/2 fixed independent of small eta, numerator Re=1/2, denominator Re=1/2+eta, |t|<=100log(2q); omega_D>2eta on derivative disks",
+    "evidence": "read strong_goldbach_nov2026_ratios_attack.md:7-18; cited PDF not in repo",
+    "source_file": "proof/strong_goldbach_nov2026_ratios_attack.md",
+    "notes": "Supplied statement only."
+  },
+  {
+    "id": "C28",
+    "statement": "Joint product cutoff gives normalized Dirichlet ratios error O_{eta,eps}(q^(-eta+eps))",
+    "status": "CONDITIONAL",
+    "hypothesis": "Dirichlet GRH; fixed small eta; smooth mollifiers with product index Y=q; primitive characters; |t| << log q",
+    "evidence": "read strong_goldbach_nov2026_ratios_attack.md:92-94; no machine check",
+    "source_file": "proof/strong_goldbach_nov2026_ratios_attack.md",
+    "notes": "Exponent still eta short of GWX detector requirement >2eta."
+  },
+  {
+    "id": "C29",
+    "statement": "Direct signed moment reaches critical exponent B_q(eta) << q^(1-2eta+eps)",
+    "status": "CONDITIONAL",
+    "hypothesis": "Dirichlet GRH; joint cutoff Y=q^2; fixed 0<eta<1/4",
+    "evidence": "read strong_goldbach_nov2026_ratios_attack.md:170-191; no machine check",
+    "source_file": "proof/strong_goldbach_nov2026_ratios_attack.md",
+    "notes": "The model H_p has size p^(1-2eta); separate triangle bounds cannot give o(p^(1-2eta))."
+  },
+  {
+    "id": "C30",
+    "statement": "Moving-line criterion B_q(c/log(2q)) = o(phi*(q)) gives G(N)=N S(N)+o(N) for even N",
+    "status": "CONDITIONAL",
+    "hypothesis": "the criterion itself plus Dirichlet GRH and finite line splitting",
+    "evidence": "read strong_goldbach_nov2026_ratios_attack.md:154-168; no proof of (7)",
+    "source_file": "proof/strong_goldbach_nov2026_ratios_attack.md",
+    "notes": "Asymptotic needs explicit finite bridge to all even N."
+  },
+  {
+    "id": "C31",
+    "statement": "Pascadi Selberg-conditional exponent 8/15 and twisting-polynomial length T^0.532",
+    "status": "CONDITIONAL",
+    "hypothesis": "Selberg eigenvalue conjecture; supplied arXiv:2611.34917v1 statements",
+    "evidence": "read persistent_push.md:82-101 and ratios_attack.md:3,104; cited PDF not in repo",
+    "source_file": "proof/strong_goldbach_persistent_push.md; proof/strong_goldbach_nov2026_ratios_attack.md",
+    "notes": "Height-aspect, not conductor-aspect endpoint."
+  },
+  {
+    "id": "C32",
+    "statement": "Li-Liu narrowing to a=1.8999998 unconditional and a=1.39998 under WEH(0.999)",
+    "status": "CONDITIONAL",
+    "hypothesis": "unconditional: continuity bound (13) from Li-Liu Thm 1.1 margin; conditional version: WEH(0.999) weighted Elliott-Halberstam, Li-Liu Thm 1.3, arXiv:2606.05224v2",
+    "evidence": "read persistent_push.md:230-271; no machine check; cited PDF not in repo",
+    "source_file": "proof/strong_goldbach_persistent_push.md",
+    "notes": "Loss diverges as b down to 1; cannot reach a=1."
+  },
+  {
+    "id": "C33",
+    "statement": "Exact GWX-model subtraction identity [E_q,W] = sum b_q(h){G_{q,W}(h)-S(h)F_+(h)} - Delta diagonal - Delta sum k_q(h)F_-(h)",
+    "status": "CONDITIONAL",
+    "hypothesis": "Dirichlet GRH; q>1; smooth compactly supported test W in positive quadrant",
+    "evidence": "read persistent_push.md:35-58; no machine check",
+    "source_file": "proof/strong_goldbach_persistent_push.md",
+    "notes": "Identity, not estimate; leading residual is unestimated."
+  },
+  {
+    "id": "C34",
+    "statement": "Positive-definite sum-kernel detector impossible; N=8 gives exact negative signed moment",
+    "status": "UNVERIFIED",
+    "hypothesis": "mathematical argument read, not independently re-derived",
+    "evidence": "read persistent_push.md:180-209",
+    "source_file": "proof/strong_goldbach_persistent_push.md",
+    "notes": "Obstruction to a strategy, not to Goldbach."
+  },
+  {
+    "id": "C35",
+    "statement": "Sparse-conductor reflection-hole models at N=2^k and N=2p^2",
+    "status": "UNVERIFIED",
+    "hypothesis": "probabilistic finite construction; not a GRH/GWX-satisfying model",
+    "evidence": "read persistent_push.md:305-322; no code run",
+    "source_file": "proof/strong_goldbach_persistent_push.md",
+    "notes": "Top primitive family supplies -phi(N), compatible with lower-conductor uniformity."
+  }
+]
