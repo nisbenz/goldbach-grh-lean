@@ -134,18 +134,33 @@ the desk has an `--id` flag (added after `--hard` mis-targeted agents). Renew wi
   `attack/audit/B011_ZEROPAIR_ANALYSIS.md`.
 
 ### The hard blockers (all OPEN — no proof, no refutation)
-| id | program | blocker | concrete next angle from the analyses |
-|---|---|---|---|
-| B-002 | analytic | Pointwise Strong Goldbach beyond exceptional set (E(X)/X -> 0, not E(X)=0) | H3 centering (Theorem 3); signed minor-arc criterion H1/H2/H3 |
-| B-003 | sieve | Parity countermodel: weights pass divisor tests for every level <1 yet contain no primes | numeric model (X=1e5) shows bilinear B+/U+ = 1 exactly; need an INDEPENDENT bilinear theorem for genuine Lambda coefficients |
-| B-004 / B-014 | analytic | GWX Dirichlet 2/2 ratios: q^(1-2eta) conductor barrier | moving-line / finite-endpoint one-sided criteria; arXiv:2611.18825v1 (supplied, unverified) |
-| B-005 | cond | Automorphic-RH parity survival + Grand RH | parity survival theorem survives; do not assume it closes the gap |
-| B-007 | comput | Independent re-verification of the 4e18 finite claim | distributed/certificate-based check; our kernel-checked range is only 1e4 |
-| B-010 | analytic | 1/4 mean-square exponent gap | L2->sup artifact; need mean-square exponent alpha<2 (currently 5/2); L2-budget lemma checked, analytic improvement open |
-| B-011 | analytic | Zero-pair T^(3/2)log^2T block | Stirling confirms block; survives ERH/Grand RH; need signed two-input estimate retaining common phase; phase-sum lemma checked |
-| B-012 | sieve | Bilinear test with strict domination | directly follows B-003: show genuine Lambda coefficients beat the parity model |
-| B-013 | redteam | Fourier reflection hole in Z/MZ | convolution-zero witness in Z/32Z checked; Fourier-smallness still open |
-| B-015 | sieve | Li-Liu (1+1.9) narrowing to a=1 | divergence as b->1; new supply estimates carrying parity |
+Every blocker has a GitHub issue in this repository. **Work the issue, not just the local map:**
+post progress/obstacles on the issue so the owner and other agents see them. Issue numbers are
+stable handoff ids; when a blocker is resolved, close its issue with the checker verdict.
+
+| id | issue | program | blocker | concrete next angle from the analyses |
+|---|---|---|---|---|
+| B-002 | #2 | analytic | Pointwise Strong Goldbach beyond exceptional set (E(X)/X -> 0, not E(X)=0) | H3 centering (Theorem 3); signed minor-arc criterion H1/H2/H3 |
+| B-003 | #3 | sieve | Parity countermodel: weights pass divisor tests for every level <1 yet contain no primes | numeric model (X=1e5) shows bilinear B+/U+ = 1 exactly; need an INDEPENDENT bilinear theorem for genuine Lambda coefficients |
+| B-004 | #4 | analytic | GWX Dirichlet 2/2 ratios: q^(1-2eta) conductor barrier | moving-line / finite-endpoint one-sided criteria; arXiv:2611.18825v1 (supplied, unverified) |
+| B-005 | #5 | cond | Automorphic-RH parity survival + Grand RH | parity survival theorem survives; do not assume it closes the gap |
+| B-007 | #6 | comput | Independent re-verification of the 4e18 finite claim | distributed/certificate-based check; our kernel-checked range is only 1e4 |
+| B-010 | #7 | analytic | 1/4 mean-square exponent gap | L2->sup artifact; need mean-square exponent alpha<2 (currently 5/2); L2-budget lemma checked, analytic improvement open |
+| B-011 | #8 | analytic | Zero-pair T^(3/2)log^2T block | Stirling confirms block; survives ERH/Grand RH; need signed two-input estimate retaining common phase; phase-sum lemma checked |
+| B-012 | #9 | sieve | Bilinear test with strict domination | directly follows B-003: show genuine Lambda coefficients beat the parity model |
+| B-013 | #10 | redteam | Fourier reflection hole in Z/MZ | convolution-zero witness in Z/32Z checked; Fourier-smallness still open |
+| B-014 | #11 | analytic | GWX conductor barrier (companion to B-004) | decide whether to merge with B-004 into one attack thread |
+| B-015 | #12 | sieve | Li-Liu (1+1.9) narrowing to a=1 | divergence as b->1; new supply estimates carrying parity |
+
+### Issue workflow (mirrors the fleet model)
+1. `gh issue view <number> --repo nisbenz/goldbach-grh-lean` — read the issue before leasing.
+2. Lease the matching blocker locally: `python3 attack/desk/desk.py next --holder <name> --id <blocker-id>`.
+3. Comment on the issue with a short progress note when you start, and with the exact obstacle when
+   you are stuck or release the lease. Agents do not close issues or push; the owner integrates.
+4. When a checker-verified result resolves a blocker, update `attack/map/blockers.json` and
+   `attack/map/claims.json`, then ask the owner to close the issue with the checker verdict.
+5. If an issue is closed by someone else, release your lease at once — do not work a resolved
+   blocker (lesson from the fleet races: late proofs are worth nothing).
 
 ### Honest summary for Astra
 ERH is already what the repo calls Dirichlet GRH, so assuming it adds **no** new exponent.
