@@ -1,0 +1,8 @@
+# B-004 research checkpoint
+
+- [Q] 2026-11-27 16:20 UTC. Read both open issues and acquired B-004 lease `a7a1eb2ffd0547c5850907b0ffb14376`. B-014 is the companion. Start note posted on #4.
+- [I] Plan. Recompute the cutoff envelopes, distinguish the two endpoint weights, and compare symbolic finite arithmetic with controlled numerical enclosures. Proposed Lean work and analytic hypotheses retain their own status.
+- [P] Re-derived the three cutoff balances and the balanced-block range. Generated exact log-pair coefficients for 39 targets and Arb enclosures for both endpoint weights. At 8, the narrow PSD test has zero actual mass. The original-weight top conductor has sizeable contributions from other multiples of p in the finite sample.
+- [P] Completed the original fixed-weight sum through 5N with a rigorous exponential tail. Both endpoint normalizations and conditional (16) are documented in the audit. Added an elementary comparison for the varying minorant and identified the single-target signed estimate left after exact projection.
+- [Q] Final. Both tracked issues and map entries were open on recheck. Released lease `a7a1eb2ffd0547c5850907b0ffb14376` with reason `missing_lemma`. [Closing comment on #4](https://github.com/nisbenz/goldbach-grh-lean/issues/4#issuecomment-7223350692) · [Closing comment on #11](https://github.com/nisbenz/goldbach-grh-lean/issues/11#issuecomment-7223352318).
+- [I] Recommend consolidating the analytic estimates under B-004. The proposed dyadic projector specification has research status only. [Full report](/home/nisbenz/.t3/projects/weak-goldbach/attack/audit/B004_B014_GWX_RATIOS_ATTACK.md).

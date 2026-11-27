@@ -37,3 +37,11 @@
 - Lease released at end with reason `analysis_complete_no_proof`.
 - Expected parent re-verification: `grep -n 'Verdict' audit/B003_PARITY_ANALYSIS.md`,
   `wc -c` both files, re-run `python3 /tmp/opencode/b003/countermodel.py`.
+
+## Wave 2 — Astra (astra-w2-b003)
+
+[P] 2026-11-27 16:36 UTC. Issues #3 and #9 and the local map are open. B-003 lease `b0bcd0672ae24911a0806ef0b068b4ba` acquired. The measurement will keep every k in the box and use the literal shifted Mangoldt weight. [Issue start](https://github.com/nisbenz/goldbach-grh-lean/issues/3#issuecomment-7223458874)
+
+[P] The scratch scan reproduced all five Wave 1 genuine off-diagonals, then found positive values on all nine chosen highly composite or primorial multiples. The independently assembled local-product predictor agrees in sign on 273/288 sampled even targets. At N=30030 the uncentered genuine signed mass equals the entire raw mass. The common local factor from primes dividing N accounts for much of the observed family dependence. [P] The three requested declarations compile in the pinned v4.16.0 environment, with the allowed axiom list on each. The scratch port defines the missing arithmetic Liouville function explicitly.
+
+[P] The full report, including durable copies of the measurement and Lean sources, is [B003_B012_ASTRA_DISPERSION_PROJECTION.md](../audit/B003_B012_ASTRA_DISPERSION_PROJECTION.md). The verified local compile exited 0 and printed exactly [propext, Classical.choice, Quot.sound] on each theorem. Source declarations matched; the banned-token scan was empty. [U] v4.36.0 strict checks are pending. The positive side of the genuine quadratic form, the genuine signed Type II cancellation and the Vaughan recombination remain open. [P] The desk released `b0bcd0672ae24911a0806ef0b068b4ba` with reason `missing_lemma`; both local blockers and GitHub issues were open on the final check. [Issue #3 findings](https://github.com/nisbenz/goldbach-grh-lean/issues/3#issuecomment-7223639224) · [Issue #9 cross-note](https://github.com/nisbenz/goldbach-grh-lean/issues/9#issuecomment-7223641312)

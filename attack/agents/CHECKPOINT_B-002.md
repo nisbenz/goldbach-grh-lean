@@ -45,3 +45,11 @@ B-002 remains `open`.
 - No Lean build, no checker run, no git operation by this subagent; no file
   under `map/`, `lean/`, `desk/`, `checker/`, `news/` or the cloned repo touched.
 - No success claim about Goldbach; no status flip.
+
+## Wave 2 — Astra (astra-b002)
+
+- [P] 2026-11-27 16:20 UTC. Read the required sources, confirmed issue #2 and the local blocker open, obtained lease `788f7e551cc34a7abc7ecf2a94d25ec0`, and posted the start comment. Research target is Theorem 3, a direct finite scan and an assessment of signed estimates.
+- [P] Endpoint interval and all 24,999 finite rows computed. Independent full sums reproduced selected rows. The minimum is at 4294. The averaged-center analysis now includes a cyclic example with a prescribed hole and large correlations at every other even center simultaneously.
+- [P] Completed the [Wave 2 audit](../audit/B002_ASTRA_CENTERING_ATTACK.md), including rational certificate and direct scan source. Both finite algebra declarations passed Lean 4.16.0 with exactly the three allowed dependencies. [U] They remain proposed for the pinned 4.36.0 project.
+- [P] Derived a negative main term for the sum of the centered differences and leading energy asymptotics on the two sparse families. [U] The signed lower bound for a specified target is open under ERH. Logged the precise failure to transfer across centers.
+- [P] Released lease `788f7e551cc34a7abc7ecf2a94d25ec0` with reason `missing_lemma`. Confirmed the desk lists B-002 as open, no lease for this holder, and issue #2 open with both progress comments. [Closing comment](https://github.com/nisbenz/goldbach-grh-lean/issues/2#issuecomment-7223333483)

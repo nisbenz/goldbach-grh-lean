@@ -64,3 +64,10 @@ desk CLI) plus the two files above. Other untracked files present in the worktre
 (`CHECKPOINT_B-003.md`, `CHECKPOINT_B-010.md`, `B010_MEANSQUARE_ANALYSIS.md`,
 `lean/Goldbach/Finite50000.lean`) belong to other concurrent agents and were
 **not** created or touched by this agent.
+
+## Wave 2 — Astra (astra-w2-b011)
+
+- [Q] 2026-11-27. Issues #8 and #7 open at intake. B-011 lease `de3b1451cb124887993d765bc1730546`. Investigating finite arcs, positive-ordinate blocks, and the companion Fourier moment budget.
+- [P] Full-line beta-integral argument gives a uniform-in-target positive dyadic bound of order T times the two local zero-density factors. Fixed finite arcs exponentially attenuate high blocks. Reproducible calculations cover 1,561 zeta ordinates and 278 ordinates from four primitive nonprincipal characters. The complete report includes the aggregate finite-arc diagnostic.
+- [P] For the companion dissection the sharp abstract moment power is p+1/2. A modulated interval example saturates it. The real-exponent budget and Markov conjunction compiled in Lean 4.16.0 and passed a separately typed import test. [Q] The vendored checker rejected the external scratch module at its project-path gate.
+- [Q] Closing findings posted on [#8](https://github.com/nisbenz/goldbach-grh-lean/issues/8#issuecomment-7223611762) and [#7](https://github.com/nisbenz/goldbach-grh-lean/issues/7#issuecomment-7223613576). Lease `de3b1451cb124887993d765bc1730546` released with reason `missing_lemma`. Subsequent desk and issue checks confirmed both blockers open and this lease absent. [U] The missing lemma controls the signed complementary coefficient at the specified even target.

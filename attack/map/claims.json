@@ -1,6 +1,6 @@
 {
   "schema": "goldbach-attack/claims v1",
-  "updated_at": "2026-11-26T22:00:00Z",
+  "updated_at": "2026-11-27T16:35:00Z",
   "claims": [
     {
       "id": "GB-BINARY",
@@ -15,16 +15,16 @@
       "statement": "Every odd natural number n > 5 is the sum of three primes.",
       "status": "conditional",
       "hypothesis": "GRH + 5 axioms in WeakGoldbach/Analytic.lean (R_total, M_coeff, grh_arc_error_bound, major_arc_main_term_lower_bound, prime_power_subtraction_bound) + binaryGoldbach_4e18 + certified_prime_ladder_1e22",
-      "source": "refs/goldbach-grh-lean/proof/weak_goldbach_proof.md; audit/PRELIMINARY_FINDINGS.md",
-      "notes": "Cloned repo claims GRH-conditional proof for odd N>=7 with a finite ladder 4e18->1e22. The Lean theorem derives from 17 declared axioms (audit finding 2026-11-26); NOT checked. Python interval verifiers for constants PASS."
+      "source": "refs/goldbach-grh-lean/proof/weak_goldbach_proof.md; audit/PRELIMINARY_FINDINGS.md; checker/runs.jsonl (54d1f6bc8b504a4998c186e751f13799)",
+      "notes": "v4.16.0 lake build verified 2026-11-27 (exit 0); #print axioms confirms weak_goldbach_theorem depends on propext, Classical.choice, Quot.sound plus exactly the 7 listed axioms. Conditional, NOT unconditional."
     },
     {
       "id": "GB-BIN-EXC",
       "statement": "E(X) <= 2,000,000 sqrt(X) (log X)^3, where E(X) counts even n in [4,X] not a sum of two primes; hence E(X)/X -> 0.",
       "status": "conditional",
       "hypothesis": "GRH + 10 axioms in WeakGoldbach/BinaryExceptional.lean (R2_total, M2_coeff, T_trunc, U_tail, S2_series, J_int, grh_binary_arc_L2_bound, binary_singular_integral_bounds, binary_singular_series_bounds, binary_prime_power_bound) + binaryGoldbach_4e18",
-      "source": "refs/goldbach-grh-lean/proof/binary_goldbach_exceptional_proof.md; audit/PRELIMINARY_FINDINGS.md",
-      "notes": "Almost-all result, not pointwise. Derives from declared axioms (audit 2026-11-26); NOT checked. Python interval verifier PASS."
+      "source": "refs/goldbach-grh-lean/proof/binary_goldbach_exceptional_proof.md; audit/PRELIMINARY_FINDINGS.md; checker/runs.jsonl (87f2e8051ca34677941a163cb3c13e3c)",
+      "notes": "v4.16.0 lake build verified 2026-11-27 (exit 0); #print axioms confirms binary_goldbach_exceptional_bound and binary_goldbach_density_one depend on propext, Classical.choice, Quot.sound plus exactly the 11 listed axioms. Almost-all conditional result, not pointwise."
     },
     {
       "id": "GB-FINITE-OESP",
@@ -137,6 +137,70 @@
       "hypothesis": "none (pure finset/order)",
       "source": "lean/Goldbach/L2Budget.lean; audit/B010_MEANSQUARE_ANALYSIS.md section 3.2",
       "notes": "Kernel build exit 0. Formalizes the logical kernel of the L^2->sup step; the analytic 1/4 gap (B-010) remains OPEN."
+    },
+    {
+      "id": "GB-H3-MARGIN",
+      "statement": "Theorem 3 (H3) RH loss at C=4*10^18 with kappa=2 lies in [103542532892, 103542532893]*10^-18 < 1.05*10^-7",
+      "status": "checked",
+      "hypothesis": "none (exact rational interval arithmetic)",
+      "source": "attack/audit/B002_ASTRA_CENTERING_ATTACK.md; parent re-verified /tmp/astra_b002/margin.py (exit 0)",
+      "notes": "Certifies the numerical H3 loss margin only; does not establish RH or (H3) itself."
+    },
+    {
+      "id": "GB-B002-CENTERING",
+      "statement": "B002.reflection_energy + B002.centered_expansion: exact finite reflection energy difference U_N = E_+ - E_- and centered expansion (6) for any a : N -> R and 1 < N",
+      "status": "checked",
+      "hypothesis": "none (finite algebra; local Lean v4.16.0 kernel check, pending v4.36.0 strict_check)",
+      "source": "attack/audit/B002_ASTRA_CENTERING_ATTACK.md section 5; parent elaborated in lean/ v4.16.0 (exit 0)",
+      "notes": "#print axioms confirms only [propext, Classical.choice, Quot.sound]. Pure finite algebra; B-002 remains OPEN."
+    },
+    {
+      "id": "GB-B013-U16",
+      "statement": "ReflectionAudit.reflection16_lower_tests: deterministic largest-conductor reflection hole on U_16 with zero reflected products, mean 1, and exact vanishing against every function of x mod 8",
+      "status": "checked",
+      "hypothesis": "none (finite algebra; local Lean v4.16.0 kernel check, pending v4.36.0 strict_check)",
+      "source": "attack/audit/B013_REFLECTION_HOLE_ATTACK.md section 5; parent elaborated in lean/ v4.16.0 (exit 0)",
+      "notes": "#print axioms confirms only [propext, Classical.choice, Quot.sound]. Deterministic witness for N=16; general B-013 remains OPEN."
+    },
+    {
+      "id": "GB-B015-MARKED",
+      "statement": "B015.subcritical_marked_divisor: for 1<=z, 1<m<z^5, P^-(m)>z, (1 - liouville m)*(1 - marked z m) <= if m.Prime then 2 else 0",
+      "status": "checked",
+      "hypothesis": "none (finite arithmetic; local Lean v4.16.0 kernel check, pending v4.36.0 strict_check)",
+      "source": "attack/audit/B015_B005_SIEVE_NARROWING_ATTACK.md; parent elaborated in lean/ v4.16.0 (exit 0)",
+      "notes": "#print axioms confirms only [propext, Classical.choice, Quot.sound]. Sharpens r^3<=N to r^3<=m; B-015/B-005 remain OPEN."
+    },
+    {
+      "id": "GB-B010-MOMENT",
+      "statement": "momentBudget: for any finite E : iota -> R and real p >= 1 with sum |E i|^p <= B, every |E i|^p <= B and (card {i | T <= |E i|}) * T^p <= B for all T > 0",
+      "status": "checked",
+      "hypothesis": "none (finite real/finset; local Lean v4.16.0 kernel check, pending v4.36.0 strict_check)",
+      "source": "attack/audit/B010_B011_ASTRA_ZEROPAIR_MOMENTS.md section 5; parent elaborated in lean/ v4.16.0 (exit 0)",
+      "notes": "#print axioms confirms only [propext, Classical.choice, Quot.sound]. Generalizes GB-B010-L2 to real L^p; B-010 remains OPEN."
+    },
+    {
+      "id": "GB-B012-WEIGHTED",
+      "statement": "GoldbachAttack.weighted_prime_mass_cuberough + exists_positive_prime_of_cuberough_strict: weighted prime mass equals (S - B)/2 on cube-root-rough support and B < S implies a positive-weight prime",
+      "status": "checked",
+      "hypothesis": "none (finite real arithmetic; local Lean v4.16.0 kernel check, pending v4.36.0 strict_check)",
+      "source": "attack/audit/B003_B012_ASTRA_DISPERSION_PROJECTION.md section 6; parent elaborated in lean/ v4.16.0 (exit 0)",
+      "notes": "#print axioms confirms only [propext, Classical.choice, Quot.sound]. Uses transparent local liouville def for v4.16.0; B-012 remains OPEN."
+    },
+    {
+      "id": "GB-B004-DYADIC",
+      "statement": "b004_dyadic_projector: for 2 <= k and any h : N, sum_{d | gcd(2^k, h)} moebius(2^k / d) * totient(d) = phi(2^k) 1_{2^k|h} - phi(2^(k-1)) 1_{2^(k-1)|h}",
+      "status": "checked",
+      "hypothesis": "none (finite arithmetic; local Lean v4.16.0 kernel check, pending v4.36.0 strict_check)",
+      "source": "attack/audit/B003_B012_ASTRA_DISPERSION_PROJECTION.md section 6; parent elaborated in lean/ v4.16.0 (exit 0)",
+      "notes": "#print axioms confirms only [propext, Classical.choice, Quot.sound]. Exact dyadic primitive projector; B-004 remains OPEN."
+    },
+    {
+      "id": "GB-FINITE-PACKED-10000",
+      "statement": "GoldbachAttack.binaryGoldbachUpTo_10000 via packed witness + band-product gcd kernel certificate (5.51s build, 5.38s exact-type replay)",
+      "status": "checked",
+      "hypothesis": "none (local Lean v4.16.0 kernel replay, pending v4.36.0 strict_check)",
+      "source": "attack/audit/B007_COMPUTATIONAL_VERIFICATION_AUDIT.md; parent re-verified Recheck.lean 10000 (exit 0, 381 replay constants)",
+      "notes": "#print axioms confirms only [propext, Classical.choice, Quot.sound]; 15.6KB bound-specific source vs 511KB legacy. Native C++ + 30-wheel also independently verified to 5e7 (not kernel-checked); 4e18 remains external."
     }
   ]
 }

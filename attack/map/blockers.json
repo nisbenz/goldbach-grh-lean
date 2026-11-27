@@ -24,7 +24,8 @@
       "difficulty": "hard",
       "why": "The repo's GRH result gives E(X)/X -> 0, not E(X) = 0. Closing the gap is the central blocker.",
       "route": "Fourier/reflection-hole and parity-countermodel analyses in proof/strong_goldbach_research.md; GRH zero-free-region refinements.",
-      "assigned_to": null
+      "assigned_to": null,
+      "note": "Astra Wave 1 (B002_ASTRA_CENTERING_ATTACK.md): H3 RH loss certified < 1.05e-7; U_N/(kappa*N) negative at 24967/24999 even N<=50000 (min -0.456535); PNT proves negative average of U_N; Lean v4.16.0 centering identities compiled. Pointwise signed lower bound remains open under ERH."
     },
     {
       "id": "B-003",
@@ -35,7 +36,8 @@
       "difficulty": "hard",
       "why": "The repo records a prime-free parity countermodel to every level below 1 \u2014 a genuine obstruction to sieve-only routes.",
       "route": "Analyze the countermodel; determine whether weighted/one-sided routes (Chen, Li\u2013Liu 1+1.9) bypass it.",
-      "assigned_to": null
+      "assigned_to": null,
+      "note": "Astra Wave 2 (B003_B012_ASTRA_DISPERSION_PROJECTION.md): scanned 315 targets up to 2^20; O_true changes sign (negative on 7 powers of 2, positive on all 9 highly composite/primorial multiples; HL covariance predictor matches 273/288 signs, r=0.925); O>=-D>>-N log^2 N; left-prime erasure preserves all d,k>1 box statistics. Remains open."
     },
     {
       "id": "B-004",
@@ -46,7 +48,8 @@
       "difficulty": "research",
       "why": "Nov 2026 Gou\u2013Wang\u2013Xu route (arXiv:2611.18825v1) plus Pascadi Kloosterman bounds (arXiv:2611.34917v1); a critical conductor barrier remains.",
       "route": "Moving-line and finite-endpoint one-sided criteria in proof/strong_goldbach_nov2026_ratios_attack.md.",
-      "assigned_to": null
+      "assigned_to": null,
+      "note": "Astra Wave 1 (B004_B014_GWX_RATIOS_ATTACK.md): 3 cutoff optima & Bettin-Chandee <0.608 vs theta>2 re-derived; 39 targets + 25 eq.(16) + 28 PSD cases verified in 160-bit Arb; asymmetric shifts, conductor combining, Y=N^2/4 projection, and minorants audited. Consolidate analytic work here; keep B-014 for external source verification."
     },
     {
       "id": "B-005",
@@ -80,7 +83,8 @@
       "difficulty": "hard",
       "why": "The 4*10^18 computational claim is the launchpad for the prime ladder; it is currently only a citation.",
       "route": "Design a distributed/certificate-based check; start with a native sieve to a modest bound and verify all even n; scale.",
-      "assigned_to": null
+      "assigned_to": null,
+      "note": "Astra Wave 2 (B007_COMPUTATIONAL_VERIFICATION_AUDIT.md): independent native check to 5e7 (0.092s, max p_min=1039 at 37998938) + all 2501 Pratt ladder certs replayed; caught verify_finite unsigned underflow false-PASS bug at M=6,L=99; packed Lean v4.16.0 BinaryGoldbachUpTo 10000 verified in 5.51s (replay 5.38s); full 4e18 estimated ~1803 node-years at high-window CPU rate."
     },
     {
       "id": "B-008",
@@ -115,7 +119,8 @@
       "difficulty": "research",
       "why": "L2 error gives single-coefficient allowance ~40N^(5/4)L^(3/2) but positivity needs ~N: exponent gap exactly 1/4. Markov controls counts, not sign at a fixed even N.",
       "route": "Pointwise signed minor-arc estimate; higher-moment/quasi-RH exceptional counts (may still allow isolated exceptions). Source: strong_goldbach_research.md blocker 1.",
-      "assigned_to": null
+      "assigned_to": null,
+      "note": "Astra Wave 2 (B010_B011_ASTRA_ZEROPAIR_MOMENTS.md): proved sharp L^p moment exponent beta(p)=p+1/2 from companion norm bounds (single-coeff powers 5/4, 9/8, 13/12 -> 1 as p->inf; direct L^1 gives 2NL), with modulated-interval witness hitting -N; Lean v4.16.0 momentBudget compiled. Remains open."
     },
     {
       "id": "B-011",
@@ -126,7 +131,8 @@
       "difficulty": "research",
       "why": "GRH fixes Re rho=1/2 but not cancellation in kernel (4); same-sign zero pairs with N^{i(gamma+gamma')} survive absolute summation.",
       "route": "Weighted conductor-uniform pair-correlation after summing centers, at each even N; do not assume Montgomery pair correlation applies. Source: strong_goldbach_research.md blocker 2.",
-      "assigned_to": null
+      "assigned_to": null,
+      "note": "Astra Wave 2 (B010_B011_ASTRA_ZEROPAIR_MOMENTS.md): Beta-integral + local zero-density proof saves a full sqrt(T), improving full-line positive-ordinate dyadic block from T^(3/2)log^2 T to O(T log(2dT)log(2d'T)) uniformly in N under ERH; finite arcs suppress high ordinates exponentially. Logarithmic gap & signed complementary-arc bound remain open."
     },
     {
       "id": "B-012",
@@ -137,7 +143,8 @@
       "difficulty": "research",
       "why": "Weights a_n^\u00b1 = K^-1 w(n)(1\u00b1lambda(n)) pass divisor tests to any level <1 under RH yet the plus sequence has no primes \u2014 sieve-only routes cannot distinguish primes.",
       "route": "Bilinear test sum a_{dk} lambda(d)lambda(k) with strict domination; or independent two-form theorem for genuine Lambda coefficients. Source: strong_goldbach_research.md blocker 3.",
-      "assigned_to": null
+      "assigned_to": null,
+      "note": "Astra Wave 1 (B012_BILINEAR_PARITY_ATTACK.md): genuine rough B/S in [-0.343,-0.316] vs +1 for a+; centered dispersion off-diagonal O<0 on all 5 genuine runs vs O_pm >> N^(3/2) proved unconditionally (PNT + lambda(k) projection) for BOTH parity models on N=2^t. Target-uniform upper bound on genuine O remains open."
     },
     {
       "id": "B-013",
@@ -148,7 +155,8 @@
       "difficulty": "research",
       "why": "A random half of each \u00b1orbit has (1_D*1_D)(0)=0 while all nonzero Fourier coefficients are O(sqrt(M log M)) \u2014 density + small coefficients do not force the reflection center.",
       "route": "Positivity/average over multiple centers, or kernel with controlled signed energy; ternary has an extra Fourier factor. Source: strong_goldbach_research.md blocker 4.",
-      "assigned_to": null
+      "assigned_to": null,
+      "note": "Astra Wave 1 (B013_REFLECTION_HOLE_ATTACK.md): sharp Hoeffding bound sqrt(1+(M/2)log M) derived for all even M>=4; hole32 peak=5.648543; largest-conductor holes (2^k, 2p^2 incl. p=3) verified on 16 moduli with exact E-O=-g^2; U16 micro-lemma compiled in Lean v4.16.0; fiber surplus test fails for all 2p^2 with p>1190."
     },
     {
       "id": "B-014",
@@ -159,7 +167,8 @@
       "difficulty": "research",
       "why": "GWX theorem conditional on Hypothesis 1.1 of arXiv:2611.18825v1 (PDF not in repo); critical conductor barrier remains; supplied, unverified.",
       "route": "Moving-line and finite-endpoint one-sided criteria; joint product moments. Source: audit C27 + ratios_attack.md.",
-      "assigned_to": null
+      "assigned_to": null,
+      "note": "Astra Wave 1 recommends consolidating analytic work under B-004 and retaining B-014 as external-source verification tracker for GWX/Pascadi manuscripts (PDFs absent locally)."
     },
     {
       "id": "B-015",
@@ -170,19 +179,20 @@
       "difficulty": "research",
       "why": "Repo narrows a to 1.8999998 (uncond) / 1.39998 (WEH(0.999)); diverges as b down to 1 \u2014 cannot reach a=1. arXiv:2606.05224v2 supplied, not verified.",
       "route": "New supply estimates carrying parity; Selberg upper sieve. Source: audit C32 + persistent_push.md.",
-      "assigned_to": null
+      "assigned_to": null,
+      "note": "Astra Wave 1 (B015_B005_SIEVE_NARROWING_ATTACK.md): sharpened Selberg constant in (13) from 200 to 8, reaching b=1.899989 / 1.39890 (conditional on [U] Li-Liu supply); proved parity model loss liminf >= log((a-1)/(b-1)); scanned all 249999 even N<=500000 for H(N) and Chen/Li-Liu biases; marked-divisor Lean v4.16.0 proof compiled."
     },
     {
       "id": "B-016",
       "title": "Verify the cloned repo's Lean build when Mathlib cache is available",
       "program": "found",
-      "status": "stalled",
+      "status": "resolved",
       "parallel": 3,
       "difficulty": "medium",
       "why": "Audit could not run lake build on v4.16.0 (cache host stalled). All Lean theorem claims remain UNVERIFIED; #print axioms output not captured.",
       "route": "Retry lake exe cache get in the scratch copy; capture #print axioms output; update claim_inventory.json.",
       "assigned_to": null,
-      "note": "v4.16.0 Mathlib cache host unreachable (2 timeouts); Lean build unverified. Revisit when cache available."
+      "resolution": "Resolved 2026-11-27 on local v4.16.0 toolchain: check.py lean WeakGoldbach.Main (run_id 54d1f6bc8b504a4998c186e751f13799, exit 0) and WeakGoldbach.BinaryExceptional (run_id 87f2e8051ca34677941a163cb3c13e3c, exit 0) ACCEPTED. Captured exact #print axioms: weak_goldbach_theorem uses 7 declared axioms; binary_goldbach_exceptional_bound and binary_goldbach_density_one use 11 declared axioms (both remain conditional)."
     },
     {
       "id": "B-017",

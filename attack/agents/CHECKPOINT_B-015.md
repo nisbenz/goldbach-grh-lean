@@ -1,0 +1,7 @@
+# B-015 with companion B-005
+
+[Q] astra-b015 read both open issues and leased B-015 under `dab59c8e141142d98606ec78b8bf6b44`. Start note posted on issue 12. Reviewing the normalization, uniform Selberg estimate and the distinction between the two marked-divisor cutoffs. Computation and release pending.
+
+[P] The all-even experiment through 500,000 completed. Seven targets meet or exceed the numerical threshold; the largest is 1,238. Direct trial division agreed at 147 targets. The scratch Lean proof elaborates with the repository's cached v4.16.0 Mathlib. The Selberg denominator comparison gives coefficient 8 in the limsup inequality. Preparing the uniform comparison proof, scope limits and issue notes.
+
+[P] Final full-range run used exact modular convolution for candidate counts and agreed with independent trial division on 149 targets. The completed report contains the marked-divisor proof and direct Lean dependency output. [U] The target-uniform sign estimate remains missing. [Q] B-015 lease `dab59c8e141142d98606ec78b8bf6b44` released with reason `missing_lemma`; the desk accepts the reason as a positional argument. [Issue 12 closing note](https://github.com/nisbenz/goldbach-grh-lean/issues/12#issuecomment-7223359993) · [Issue 5 closing note](https://github.com/nisbenz/goldbach-grh-lean/issues/5#issuecomment-7223362584) · [Full audit](../audit/B015_B005_SIEVE_NARROWING_ATTACK.md)
