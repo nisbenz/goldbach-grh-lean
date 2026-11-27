@@ -91,3 +91,17 @@ desk CLI) plus the two files above. Other untracked files present in the worktre
 [P] [Wave 4 report](../audit/B011_B002_W4_DECISIVE_LOWZERO_PUSH.md), equations (12)–(14), reduces the complementary coefficient under ERH to a statistic with height below 2 log log N, large individual and product conductors, and distinct input characters. Its underlying field retains squared energy ≫ N log N. [U] The target-specific signed lower bound remains open.
 
 [Q] Released lease `1a44320887bb4a9b97f300090aa2b8c7` with reason `missing_lemma`. Closing results posted on [#8](https://github.com/nisbenz/goldbach-grh-lean/issues/8#issuecomment-7224800436) and [#2](https://github.com/nisbenz/goldbach-grh-lean/issues/2#issuecomment-7224803102). No Lean submission.
+
+## Wave 5, Strike 1C — cross-modulus cancellation
+
+[Q] Lease `36c2e613e14941c8ae76334884d78977` acquired on open B-011. [Start on #8](https://github.com/nisbenz/goldbach-grh-lean/issues/8#issuecomment-7225226340)
+
+[P] Wave 4 uses a complex bilinear square, with Gauss coefficients and inverse-dependent Farey lengths. The numerical norm comparison must include both normalizations. [U] Testing the exact surviving pairs and the factorization required by Pascadi's input theorem.
+
+[Q] Resumed under lease `760bdcde13c34bcd8f69dee0b57517d4` after confirming issue #8 open. The existing start comment covers this run. [I] Testing the exact conductor and cell masks and independent completeness of the low-zero lists.
+
+[Q] Cold replay for N = 128, 160, 192 completed in 3.726 seconds. Enclosed both sides of every contributing primitive spectrum and checked the conductor masks and quadratic form by independent evaluation. [P] The reverse sum has frequency h = n + m − N. Its zero frequency carries the ordered Goldbach coefficient with a weight tending to one. [I] Recording the signed nonzero-frequency main term, the scope of the norm obstruction, and the permissible deformations of the low spectrum.
+
+[P] Completed the [Wave 5 report](../audit/B011_W5_CROSSQ_LOWZERO_STRIKE.md). Equation (8) determines the signed nonzero-frequency main term under the Wave 4 reduction. The Pascadi bilinear and full-range trilinear ledgers give exponents 187/96 and 11/6 at order N^(2/3). [Q] Across-modulus ratios were 0.521119, 0.752080 and 0.225799. The corresponding within-modulus ratios against the surviving pairwise triangle were 0.201058, 0.160657 and 0.154163. No reflection or sign assignment preserving the three measured families of exact absolute-ordinate counts reaches the adverse threshold. [U] A uniform one-sided estimate for the genuine spectra remains missing.
+
+[Q] Released `760bdcde13c34bcd8f69dee0b57517d4` with positional reason `missing_lemma`. Posted closing notes on [#8](https://github.com/nisbenz/goldbach-grh-lean/issues/8#issuecomment-7225756390) and [#2](https://github.com/nisbenz/goldbach-grh-lean/issues/2#issuecomment-7225757977). The research report has no Lean submission.

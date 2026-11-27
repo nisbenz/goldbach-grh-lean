@@ -49,7 +49,7 @@
       "why": "Nov 2026 Gou\u2013Wang\u2013Xu route (arXiv:2611.18825v1) plus Pascadi Kloosterman bounds (arXiv:2611.34917v1); a critical conductor barrier remains.",
       "route": "Moving-line and finite-endpoint one-sided criteria in proof/strong_goldbach_nov2026_ratios_attack.md.",
       "assigned_to": null,
-      "note": "Astra Waves 1 & 3 (B004_B014_GWX_RATIOS_ATTACK.md, B004_B015_W3_PERSISTENT_THRESHOLD_PUSH.md): 3 cutoff optima & Bettin-Chandee (<0.608 vs theta>2) confirmed; 39 targets + 25 eq.(16) + 28 PSD verified in 160-bit Arb; Wave 3 proved that for a fixed smooth test inside mn<q^2, subtraction isolates a single Goldbach discrepancy at q=2^k (exact) and q=p^2, N=2q (up to O(q^(1/2-2eta)log^C q) under GRH), making o(q^(1-2eta)) equivalent to R(N)=o(N)."
+      "note": "Astra Wave 5 Strike 1B (B004_W5_LEE_GWX_PASCADI_STRIKE.md, parent re-verified): verified Lee (2610.32672v2), GWX (2611.18825v1), and Pascadi (2611.34917v1) directly from arXiv LaTeX sources; proved Lee's opposing-weight m/n kernel does not transfer to Goldbach reflection (Mellin shift ~ N >> U^(1/4)); proved GWX fixed-line threshold theta < 1-2*eta = 7/8 at eta=1/16 is hit with zero saving by ERH (7/8+eps; 29/32+eps on Lee's [3/64,5/64] box); Pascadi's 207/389 is height-aspect with O(1/log T) numerator shifts and gives no improvement. Remains open."
     },
     {
       "id": "B-005",
@@ -133,7 +133,7 @@
       "why": "GRH fixes Re rho=1/2 but not cancellation in kernel (4); same-sign zero pairs with N^{i(gamma+gamma')} survive absolute summation.",
       "route": "Weighted conductor-uniform pair-correlation after summing centers, at each even N; do not assume Montgomery pair correlation applies. Source: strong_goldbach_research.md blocker 2.",
       "assigned_to": null,
-      "note": "Astra Waves 2-4 (B011_B002_W4_DECISIVE_LOWZERO_PUSH.md): at Farey order Q=floor(N^(2/3)) under ERH, ALL pole-zero cross terms are O(N^(5/6)L^2)=o(N), beta-integration drops out, and P_N/N = S(N)/e + P_N^circ + O(L^(-1/2)) where P_N^circ uses ONLY |gamma| < 2 log log N, q in (Q/L^4, Q] with q nmid N & powerful part <= L^8, cond(chi) >= q/L^2, and distinct pairs with cond(chi*chi') > Q^(1/2-delta). Yet the underlying field still has L^2 norm >> sqrt(NL) and the center-sum matrix is unitary, ruling out any unsigned norm proof."
+      "note": "Astra Wave 5 Strike 1C (B011_W5_CROSSQ_LOWZERO_STRIKE.md, parent re-verified in 3.7s): proved summing over q first at Q=floor(N^(2/3)) under ERH exposes a linear obstruction \u2014 zero frequency retains ordered von Mangoldt Goldbach coefficient (1+O(log^-4 N)), forcing nonzero frequencies to sum to -N*S(N)/e + O(N/sqrt(log N)) so o(N) is impossible; complete critical-line root isolation at N=128,160,192 (Arb <2e-9) shows within-modulus cancellation (0.136-0.157 of unitary budget) beats across-modulus (0.226-0.752). Pointwise lower bound remains open."
     },
     {
       "id": "B-012",
@@ -145,7 +145,7 @@
       "why": "Weights a_n^\u00b1 = K^-1 w(n)(1\u00b1lambda(n)) pass divisor tests to any level <1 under RH yet the plus sequence has no primes \u2014 sieve-only routes cannot distinguish primes.",
       "route": "Bilinear test sum a_{dk} lambda(d)lambda(k) with strict domination; or independent two-form theorem for genuine Lambda coefficients. Source: strong_goldbach_research.md blocker 3.",
       "assigned_to": null,
-      "note": "Astra Wave 1 (B012_BILINEAR_PARITY_ATTACK.md): genuine rough B/S in [-0.343,-0.316] vs +1 for a+; centered dispersion off-diagonal O<0 on all 5 genuine runs vs O_pm >> N^(3/2) proved unconditionally (PNT + lambda(k) projection) for BOTH parity models on N=2^t. Target-uniform upper bound on genuine O remains open."
+      "note": "Astra Wave 5 Strike 1A (B012_W5_LICHTMAN_SEMIPRIME_STRIKE.md, parent re-verified): proved Lichtman (arXiv:2611.28392v1) exact partition misses every semiprime (needs >=3k>=3 intervals; semiprime hits <=2) and reflection changes determinant from a-b to N(b-a) outside cutoff; proved central semiprime Selberg square optimal coefficient has infimum exactly 2 under prime EH (S_delta/HL_delta -> 2 on any exception sequence); direct Cauchy-Schwarz has o(1) diagonal and needs normalized off-diagonal < 4, which Pascadi (2611.34917v1) does not supply. Remains open."
     },
     {
       "id": "B-013",
@@ -169,7 +169,7 @@
       "why": "GWX theorem conditional on Hypothesis 1.1 of arXiv:2611.18825v1 (PDF not in repo); critical conductor barrier remains; supplied, unverified.",
       "route": "Moving-line and finite-endpoint one-sided criteria; joint product moments. Source: audit C27 + ratios_attack.md.",
       "assigned_to": null,
-      "note": "Astra Wave 1 recommends consolidating analytic work under B-004 and retaining B-014 as external-source verification tracker for GWX/Pascadi manuscripts (PDFs absent locally)."
+      "note": "Astra Wave 5 Strike 1B (B004_W5_LEE_GWX_PASCADI_STRIKE.md): external arXiv LaTeX source verification COMPLETE for Lee (2610.32672v2), GWX (2611.18825v1), and Pascadi (2611.34917v1); exact theorem/equation statements verified. Underlying analytic q^(1-2*eta) conductor barrier remains open and consolidated with B-004."
     },
     {
       "id": "B-015",
