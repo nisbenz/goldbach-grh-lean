@@ -14,3 +14,13 @@
 {"ts": "2026-11-27T16:44:27Z", "event": "release", "lease_id": "de3b1451cb124887993d765bc1730546", "blocker_id": "B-011", "holder": "astra-w2-b011", "reason": "missing_lemma"}
 {"ts": "2026-11-27T16:45:23Z", "event": "release", "lease_id": "b0bcd0672ae24911a0806ef0b068b4ba", "blocker_id": "B-003", "holder": "astra-w2-b003", "reason": "missing_lemma"}
 {"ts": "2026-11-27T16:55:28Z", "event": "release", "lease_id": "2ca0253c4f5144078ca56f13f380c489", "blocker_id": "B-007", "holder": "astra-w2-b007", "reason": "other"}
+{"ts": "2026-11-27T17:14:51Z", "event": "lease", "lease": {"lease_id": "55cf8dedab64414e8b97d1c6084e638e", "blocker_id": "B-007", "holder": "astra-w3-eng", "expires": "2026-11-27T17:59:51Z", "beats": 0, "max_beats": 12, "created": "2026-11-27T17:14:51Z"}}
+{"ts": "2026-11-27T17:14:55Z", "event": "lease", "lease": {"lease_id": "890bd50757ca4de0854127dddea787e1", "blocker_id": "B-004", "holder": "astra-w3-b004", "expires": "2026-11-27T17:59:55Z", "beats": 0, "max_beats": 12, "created": "2026-11-27T17:14:55Z"}}
+{"ts": "2026-11-27T17:14:57Z", "event": "lease", "lease": {"lease_id": "080ea29c3f094b738709d8f8da272da4", "blocker_id": "B-011", "holder": "astra-w3-b011", "expires": "2026-11-27T17:59:57Z", "beats": 0, "max_beats": 12, "created": "2026-11-27T17:14:57Z"}}
+{"ts": "2026-11-27T17:19:48Z", "event": "release", "lease_id": "55cf8dedab64414e8b97d1c6084e638e", "blocker_id": "B-007", "holder": "astra-w3-eng", "reason": "other"}
+{"ts": "2026-11-27T17:20:53Z", "event": "release", "lease_id": "080ea29c3f094b738709d8f8da272da4", "blocker_id": "B-011", "holder": "astra-w3-b011", "reason": "missing_lemma"}
+{"ts": "2026-11-27T17:23:28Z", "event": "release", "lease_id": "890bd50757ca4de0854127dddea787e1", "blocker_id": "B-004", "holder": "astra-w3-b004", "reason": "missing_lemma"}
+{"ts": "2026-11-27T17:28:42Z", "event": "lease", "lease": {"lease_id": "1a44320887bb4a9b97f300090aa2b8c7", "blocker_id": "B-011", "holder": "astra-w4-lowzeros", "expires": "2026-11-27T18:13:42Z", "beats": 0, "max_beats": 12, "created": "2026-11-27T17:28:42Z"}}
+{"ts": "2026-11-27T17:28:42Z", "event": "lease", "lease": {"lease_id": "13a9816177af44b8ad6b2cb19cfa730e", "blocker_id": "B-005", "holder": "astra-w4-decisive-sieve", "expires": "2026-11-27T18:13:42Z", "beats": 0, "max_beats": 12, "created": "2026-11-27T17:28:42Z"}}
+{"ts": "2026-11-27T17:45:49Z", "event": "release", "lease_id": "13a9816177af44b8ad6b2cb19cfa730e", "blocker_id": "B-005", "holder": "astra-w4-decisive-sieve", "reason": "missing_lemma"}
+{"ts": "2026-11-27T17:48:18Z", "event": "release", "lease_id": "1a44320887bb4a9b97f300090aa2b8c7", "blocker_id": "B-011", "holder": "astra-w4-lowzeros", "reason": "missing_lemma"}

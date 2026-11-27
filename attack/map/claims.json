@@ -201,6 +201,30 @@
       "hypothesis": "none (local Lean v4.16.0 kernel replay, pending v4.36.0 strict_check)",
       "source": "attack/audit/B007_COMPUTATIONAL_VERIFICATION_AUDIT.md; parent re-verified Recheck.lean 10000 (exit 0, 381 replay constants)",
       "notes": "#print axioms confirms only [propext, Classical.choice, Quot.sound]; 15.6KB bound-specific source vs 511KB legacy. Native C++ + 30-wheel also independently verified to 5e7 (not kernel-checked); 4e18 remains external."
+    },
+    {
+      "id": "GB-FINITE-50000",
+      "statement": "GoldbachAttack.BinaryGoldbachUpTo 50000 (all 24,999 even 4 <= n <= 50,000 = p + q for primes p, q) via 51-page bounded-product packed kernel certificate",
+      "status": "checked",
+      "hypothesis": "none (local Lean v4.16.0 kernel build + exact-type replay, pending v4.36.0 strict_check)",
+      "source": "attack/audit/B007_W3_FIX_AND_SCALING.md; parent verified no banned tokens, exact type, and #print axioms on Block50000.olean (exit 0)",
+      "notes": "40.3s build, 52.2s replay (2,325 declarations), 106.5KB source (vs crashed 2.58MB legacy Finite50000.lean). #print axioms confirms only [propext, Classical.choice, Quot.sound]. NOT the full conjecture."
+    },
+    {
+      "id": "GB-PRATT-5RUNGS",
+      "statement": "Kernel-checked Lucas/Pratt primality proofs for the first 5 prime-ladder rungs (3999999999999999887..19999999999999999817) via WeakGoldbach.prime_of_lucas_trace",
+      "status": "checked",
+      "hypothesis": "none (local Lean v4.16.0 kernel replay)",
+      "source": "attack/audit/B007_W3_FIX_AND_SCALING.md; parent re-ran ReplayRungs.lean (exit 0, 8,957 declarations in 1.49s)",
+      "notes": "#print axioms confirms only [propext, Classical.choice, Quot.sound]. Benchmarks feasibility of discharging certified_prime_ladder_1e22 (~11-12m replay for all 2,501 rungs)."
+    },
+    {
+      "id": "GB-W4-SIEVE-PHASE",
+      "statement": "200-bit Arb interval enclosures for switched-sieve phase diagram M(beta, theta) and BV Type II Ford-Maynard thresholds: exact C^-(3/5,2/5,1/5)=0.81398834..., a_suff=0.4383492128014972105+/-3.6e-20, a_obs=0.4756020343943107203+/-2.0e-20",
+      "status": "checked",
+      "hypothesis": "none (200-bit rigorous Arb interval arithmetic)",
+      "source": "attack/audit/B005_B012_W4_DECISIVE_PARITY_PHASE_DIAGRAM.md; parent re-ran /tmp/astra_w4_sieve/phase.py (0.327s, exit 0)",
+      "notes": "Certifies the numerical integral values and roots only; the analytic Ford-Maynard theorem applications and shifted-prime Type II input remain research/open."
     }
   ]
 }

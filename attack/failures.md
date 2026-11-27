@@ -66,3 +66,19 @@ subagent output; no PRs/pushes; conditional results keep their hypothesis.
 - [P] With explicit M=6 and L=99 the C++ first-rung search wrapped through zero and reported 18,446,744,073,709,551,557 as a prime ≤2. [I] Validate the lower domain before the search and recheck both endpoints independently before accepting a ladder.
 - [P] One high-window HIP process exited on signal 11. Its cause remains unknown. A synchronized retry and three synchronized repeats passed with the CPU checksum. [I] Discard interrupted tiles and retain failed runs in the verification record.
 - [P] The 2,000-witness-bound legacy comparison exceeded 16 seconds. The packed Lean 4.16 proof through 10,000 passed an exact-type kernel replay, but the vendored gate rejected its scratch module path before checking mathematics. [I] Keep local replay and project acceptance distinct. [U] A complete independent binary run through 4 × 10¹⁸ is still missing. [B-007 audit](audit/B007_COMPUTATIONAL_VERIFICATION_AUDIT.md)
+
+### 2026-11-27 — B-011 / B-010, differentiated errors and unsigned energy
+
+[P] The full-line zero-pair beta kernel differentiates both prime-counting error primitives, removing both reciprocal-zero weights. A bound for the primitive therefore gives no summable derivative tail by direct substitution. The companion model also has a genuine global error norm at least (1/√2 − 1/2 − o(1))√(N log N), excluding the proposed global norm repair. [I] Localize the differentiated explicit formula before applying a mean-value estimate. For H1/H2 keep the finite Farey windows and the target sign. [U] Removing heights above log⁴ N costs o(N), but the signed low-height residual remains open. [Wave 3 derivations](audit/B011_W3_PERSISTENT_BETA_PUSH.md)
+
+### 2026-11-27 — B-004 / B-015 / B-005, Wave 3 threshold tests
+
+[P] Smooth subtraction on a fixed balanced box eliminates the finer prime-square grid to square-root precision under Dirichlet GRH. The surviving grid retains the single-target Goldbach discrepancy. Lowering the rough cutoff raises the capped signed mass by the actual increase in rough mass to within twice the upper cutoff times log N. [I] Track this moving signed cost and the surviving fixed shift when testing a proposed margin. The switched upper sieve narrows the semiprime band, but its loss still diverges at the prime endpoint. [Wave 3 report](audit/B004_B015_W3_PERSISTENT_THRESHOLD_PUSH.md)
+
+## B-005 / B-012 / B-015 · Wave 4 · 2026-11-27
+
+[P] At common level one the switched lower-minus-upper margin is exactly minus twice the three-prime simplex integral. Its maximum is zero. A fixed exponent above one contradicts the progression main term on prime moduli larger than the target. [U] A genuine, target-uniform signed comparison on smaller factors from exponent 0.4383 to 1/2, or a one-sided semiprime-band saving with near-full distribution, is still missing. [I] Specify the comparison sequence, coefficient class and endpoints before transferring a Type II range to primes. [Derivation and obstruction](audit/B005_B012_W4_DECISIVE_PARITY_PHASE_DIAGRAM.md)
+
+### 2026-11-27 — B-011 / B-002, mixed term and signed low-zero pairs
+
+[P] On square-root Farey cells the primitive mixed Gauss product leaves one character sum with a cost of order √N per denominator even on a common central interval. Arbitrary overlap choices can also change the pole square by order N. [I] Specify the cells before using a signed center sum. Increasing the order to N^(2/3) makes the entire mixed term negligible. [U] On that dissection the missing estimate is a one-sided bound for distinct low-zero character pairs of large product conductor at each specified target. Their underlying field has squared energy ≫ N log N. [Wave 4 report](audit/B011_B002_W4_DECISIVE_LOWZERO_PUSH.md)

@@ -71,3 +71,23 @@ desk CLI) plus the two files above. Other untracked files present in the worktre
 - [P] Full-line beta-integral argument gives a uniform-in-target positive dyadic bound of order T times the two local zero-density factors. Fixed finite arcs exponentially attenuate high blocks. Reproducible calculations cover 1,561 zeta ordinates and 278 ordinates from four primitive nonprincipal characters. The complete report includes the aggregate finite-arc diagnostic.
 - [P] For the companion dissection the sharp abstract moment power is p+1/2. A modulated interval example saturates it. The real-exponent budget and Markov conjunction compiled in Lean 4.16.0 and passed a separately typed import test. [Q] The vendored checker rejected the external scratch module at its project-path gate.
 - [Q] Closing findings posted on [#8](https://github.com/nisbenz/goldbach-grh-lean/issues/8#issuecomment-7223611762) and [#7](https://github.com/nisbenz/goldbach-grh-lean/issues/7#issuecomment-7223613576). Lease `de3b1451cb124887993d765bc1730546` released with reason `missing_lemma`. Subsequent desk and issue checks confirmed both blockers open and this lease absent. [U] The missing lemma controls the signed complementary coefficient at the specified even target.
+
+## Wave 3 — Astra (astra-w3-b011)
+
+[Q] Leased open B-011 and posted the start on issue #8. Investigating the derivative in the zero-block duality, the conductor cost on Farey arcs, and the moment threshold for the companion model.
+
+[P] Localizing the differentiated explicit formula saves one logarithm for natural weights at height comparable to the target. On the actual Farey cells the squared norm of the height-T field is at most a constant times (N/T) log²(2QT), by shell localization and center orthogonality. Removing ordinates above log⁴ N therefore costs o(N) even with the mixed terms. The companion model has a global error-norm floor from the different leading constants in its two energies. Writing the derivations and limitations.
+
+[P] Completed [the Wave 3 report](../audit/B011_W3_PERSISTENT_BETA_PUSH.md). Its finite beta identity agreed with independent quadrature to 7.92e−15. [U] The signed low-height residual lacks the H1/H2 margin. No blocker-level proof or checker submission.
+
+[Q] Lease released with reason `missing_lemma`. Results posted on [#8](https://github.com/nisbenz/goldbach-grh-lean/issues/8#issuecomment-7224308432) and [#2](https://github.com/nisbenz/goldbach-grh-lean/issues/2#issuecomment-7224308750).
+
+## Wave 4 — Astra (astra-w4-lowzeros)
+
+[Q] Leased B-011 (`1a44320887bb4a9b97f300090aa2b8c7`) after confirming issues #8 and #2 open. [I] Following the pole, mixed and residual terms through the actual Farey windows before estimating the signed low-zero pair sum. [Start on #8](https://github.com/nisbenz/goldbach-grh-lean/issues/8#issuecomment-7224452237)
+
+[P] On canonical square-root Farey cells, completion controls the pole square. An average over multiples of a primorial shows that a uniform constant in O(N/H) is impossible. The mixed term reaches the critical power in the character norm estimate. Increasing the order to N^(2/3) makes the unsigned mixed term o(N) and allows the large-denominator zero fields to be evaluated at the cell centers.
+
+[P] [Wave 4 report](../audit/B011_B002_W4_DECISIVE_LOWZERO_PUSH.md), equations (12)–(14), reduces the complementary coefficient under ERH to a statistic with height below 2 log log N, large individual and product conductors, and distinct input characters. Its underlying field retains squared energy ≫ N log N. [U] The target-specific signed lower bound remains open.
+
+[Q] Released lease `1a44320887bb4a9b97f300090aa2b8c7` with reason `missing_lemma`. Closing results posted on [#8](https://github.com/nisbenz/goldbach-grh-lean/issues/8#issuecomment-7224800436) and [#2](https://github.com/nisbenz/goldbach-grh-lean/issues/2#issuecomment-7224803102). No Lean submission.

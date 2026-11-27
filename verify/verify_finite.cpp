@@ -16,10 +16,13 @@
 //         Each ladder prime p_i < 2^64 is proved prime using the deterministic
 //         7-base Miller-Rabin theorem (Sinclair 2011; exact for all n < 2^64).
 
+#include <algorithm>
 #include <atomic>
+#include <cerrno>
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>
+#include <limits>
 #include <mutex>
 #include <thread>
 #include <vector>
@@ -28,6 +31,16 @@ namespace {
 
 using u64 = uint64_t;
 using u128 = unsigned __int128;
+
+bool parse_bound(const char* text, u64& value) {
+    if (*text < '0' || *text > '9') return false;
+    char* end = nullptr;
+    errno = 0;
+    const auto parsed = std::strtoull(text, &end, 10);
+    if (errno != 0 || *end != '\0' || parsed > std::numeric_limits<u64>::max()) return false;
+    value = static_cast<u64>(parsed);
+    return true;
+}
 
 u64 mul_mod(u64 a, u64 b, u64 mod) {
     return static_cast<u64>((static_cast<u128>(a) * b) % mod);
@@ -114,9 +127,17 @@ struct OddSieve {
 int main(int argc, char** argv) {
     u64 M = 1'000'000'000ULL;      // Binary Goldbach direct verification bound
     u64 L = 1'000'000'000'000ULL;  // Local prime-ladder Weak Goldbach bound (10^12)
-    if (argc >= 2) M = std::strtoull(argv[1], nullptr, 10);
-    if (argc >= 3) L = std::strtoull(argv[2], nullptr, 10);
+    constexpr u64 max_bound = (1ULL << 63) - 1;
+    if (argc > 3 || (argc >= 2 && !parse_bound(argv[1], M)) ||
+        (argc >= 3 && !parse_bound(argv[2], L)) || M < 4 || M > max_bound || L > max_bound) {
+        std::cerr << "Usage: verify_finite [M [L]], with 4 <= M <= 2^63-1 and 0 <= L <= 2^63-1\n";
+        return 2;
+    }
     if ((M & 1) != 0) ++M;
+    if (L > M + 3 && M < 8) {
+        std::cerr << "ERROR: The ladder requires an odd prime <= M - 4 (even M >= 8).\n";
+        return 2;
+    }
 
     std::cout << "[1/3] Sieving primes up to M = " << M << "...\n" << std::flush;
     OddSieve sieve(M);
@@ -188,6 +209,10 @@ int main(int argc, char** argv) {
     for (auto& th : threads) th.join();
 
     if (failed.load()) return 1;
+    if (total_even_checked.load() != M / 2 - 1) {
+        std::cerr << "ERROR: Incomplete binary verification count.\n";
+        return 2;
+    }
     std::cout << "  PASS: Checked " << total_even_checked.load()
               << " even integers in [4, " << M << "] (max minimal prime = "
               << max_min_prime.load() << ").\n"
@@ -200,10 +225,19 @@ int main(int argc, char** argv) {
         u64 max_step = M - 4;
         // Start p_0 = largest odd prime <= M - 4
         u64 cur = (max_step % 2 == 0) ? (max_step - 1) : max_step;
-        while (!is_prime_u64(cur)) cur -= 2;
+        while (cur >= 3 && !is_prime_u64(cur)) cur -= 2;
+        if (cur < 3 || cur > max_step) {
+            std::cerr << "ERROR: Invalid first ladder prime.\n";
+            return 2;
+        }
+        const u64 first = cur;
         u64 rungs = 1;
         u64 max_gap_seen = 0;
         while (cur < L - 4) {
+            if (max_step > std::numeric_limits<u64>::max() - cur) {
+                std::cerr << "ERROR: Ladder step exceeds the 64-bit range.\n";
+                return 2;
+            }
             u64 target = cur + max_step;
             u64 cand = (target % 2 == 0) ? (target - 1) : target;
             while (cand > cur && !is_prime_u64(cand)) cand -= 2;
@@ -216,7 +250,7 @@ int main(int argc, char** argv) {
             cur = cand;
             ++rungs;
         }
-        std::cout << "  PASS: Verified " << rungs << " ladder primes from p_0 <= " << max_step
+        std::cout << "  PASS: Verified " << rungs << " ladder primes from p_0 = " << first << " <= " << max_step
                   << " up to p_k = " << cur << " >= " << (L - 4)
                   << " (max gap = " << max_gap_seen << " <= " << max_step << ").\n"
                   << "  => Weak Goldbach unconditionally verified on this machine for ALL odd N in [7, "

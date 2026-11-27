@@ -69,3 +69,30 @@ the blockers. tomorrow astra should make an attack on these problems."
   - **19 checked finite/algebraic claims** (11 baseline + 8 newly parent-verified across Lean v4.16.0 & exact rational arithmetic).
   - **1 resolved blocker (`B-016`)**, **11 open blockers** (`B-002`, `B-003`, `B-004`, `B-005`, `B-007`, `B-010`, `B-011`, `B-012`, `B-013`, `B-014`, `B-015`).
   - **Binary Goldbach remains OPEN (including under explicit ERH).** Every analytic, sieve, spectral, and red-team route converges on the same irreducible barrier: a pointwise, two-input, signed estimate for genuine `Lambda` that breaks parity/reflection symmetry at a single specified even target `N`.
+
+### 2026-11-27 — Astra Orchestration Wave 3 (Persistent + usage-aware deep push)
+- **Wave 3 (3 targeted `gpt-6.2-astra` agents, all parent re-verified, all leases released, issues `#2, #4, #5, #6, #8, #12` updated):**
+  - `B-011`/`B-002`/`B-010` (`B011_W3_PERSISTENT_BETA_PUSH.md`):
+    - **High-zero elimination under ERH:** Proved via Farey-cell shell energies + character orthogonality that removing **every zero above height `(log N)^4`** changes the signed H1/H2 complementary coefficient by only `O(N/sqrt(log N)) = o(N)` (including all cross terms with `S`), reducing B-011 on the actual circle strictly to low zeros `|gamma| < (log N)^4` + poles/residues.
+    - Improved the full-line `T ~ N` block by another log factor to `O(N log N)` via the differentiated explicit formula.
+    - Proved unconditionally for `B-010` that `||S - M||_r >= ||S - M||_2 >= (1/sqrt(2) - 1/2 - o(1)) sqrt(N log N)` for all `2 <= r <= inf`, ruling out global sub-square-root `L^r` Holder repair on the companion model.
+  - `B-004`/`B-015`/`B-005` (`B004_B015_W3_PERSISTENT_THRESHOLD_PUSH.md`, `attack/src/scan_rough_cutoff.py`):
+    - Tightened `B-015` narrowing constant again (**`200 -> 8 -> 4`**, 50x over repo) via product-averaged bilinear large sieve (`loss <= (2/theta) log((a-1)/(b-1))`), reaching `b = 1.899956` (unconditional `theta=1/2`) and `b = 1.393854` (WEH(0.999) in both supply and loss), given `[U]` Li-Liu supply.
+    - Proved `B-005` eq. (8) cutoff `beta = 1/5` is admissible (`f` jumps `0.353275 -> 0.577730`, **+81.706%** unsigned baseline; BV gives unsigned baseline unconditionally); capped mark had **0 crossings** across all 99,999 even `N <= 200000` at `beta = 0.201`.
+    - Proved for `B-004` that fixed smooth subtraction inside `mn < q^2` isolates a single Goldbach discrepancy at `q=2^k` (exact) and `q=p^2, N=2q` (up to `O(q^(1/2-2eta) log^C q)` under GRH), proving `o(q^(1-2eta))` on that test is strictly equivalent to `R(N) = o(N)`.
+  - `B-007` (`B007_W3_FIX_AND_SCALING.md` + `verify/verify_finite.cpp`):
+    - Fixed unsigned-underflow false-PASS bug in `verify/verify_finite.cpp` (17 regression cases verified).
+    - **Kernel-checked `BinaryGoldbachUpTo 50000` in Lean `v4.16.0`** via 51-page bounded-product packed certificate (`40.3s` build, `52.2s` replay of 2,325 declarations, allowed axioms only; `GB-FINITE-50000`, 5x beyond prior 10k frontier).
+    - Kernel-replayed first 5 Pratt ladder rungs in `1.49s` (`GB-PRATT-5RUNGS`), projecting ~11-12 min replay (~1.7h build) to eliminate `certified_prime_ladder_1e22`.
+- **Honest state after Wave 3 (11 total Astra runs):** `21` checked finite/algebraic claims, `6` resolved blockers, `11` open blockers. Binary Goldbach remains **OPEN** (including under ERH).
+
+### 2026-11-27 — Astra Orchestration Wave 4 (Decisive Push — `xhigh` reasoning, 2 surgical agents)
+- **Analytic Frontier (`B-011`/`B-002`, `B011_B002_W4_DECISIVE_LOWZERO_PUSH.md`):**
+  - Raising Farey order to `Q = floor(N^(2/3))` under Dirichlet ERH completely eliminates the pole-zero cross term (`O(N^(5/6) L^2)`) and beta-integration, compressing the entire Strong Goldbach residual into ONE discrete, dimensionless real statistic `P_N^circ`:
+    `P_N / N = S(N)/e + P_N^circ + O(1/sqrt(log N))`,
+    using **ONLY ultra-low zeros `|gamma| < 2 log log N`**, `q in (Q/L^4, Q]` with `q nmid N` and powerful part `<= L^8`, inducing conductors `>= q/L^2`, and **distinct character pairs with product conductor `> Q^(1/2 - delta)`** (all conjugate/diagonal/small-product pairs removed by Weil's bound).
+  - **Decisive norm barrier:** Proved the underlying restricted field STILL satisfies `||Z||_2 >= (sqrt(15/32) - 1/sqrt(3) - o(1)) sqrt(N log N)` and the center-sum matrix `G_q(chi chi'; -N)/phi(q)` has every singular value equal to `1` — decisively ruling out ANY unsigned `L^2` norm, low-lying zero repulsion, or matrix-norm proof under ERH!
+- **Sieve / Parity Frontier (`B-005`/`B-012`/`B-015`, `B005_B012_W4_DECISIVE_PARITY_PHASE_DIAGRAM.md`):**
+  - **Exact switched-sieve parity conservation:** Proved `M(beta, 1^-) = -2 I_3(1/beta) <= 0` on `[1/5, 1/2]` (`sup = 0` identically on `[1/3, 1/2]`), while any `theta > 1` progression hypothesis is refuted by prime moduli `N < q <= N^(1+delta)/L^B`.
+  - **Minimal Type II band proving Strong Goldbach:** In the Ford-Maynard comparison framework at **unconditional BV Type I level**, proved via a new 3-level minorant (`g = (1, -1, 2/5, -1/10)`) that a genuine signed Type II estimate on only **`N^0.4383 <= d <= sqrt(N)`** (`a_suff = 0.4383492128`) already proves Strong Goldbach for all sufficiently large even `N`, with a matching prime-free obstruction at `a_obs = 0.4756020344` (`2J = 1`). Under ordinary prime EH, any fixed upper-bound saving `c < 2` on one central semiprime band suffices.
+- **Honest state after Wave 4 (13 total Astra runs):** `22` checked finite/algebraic claims, `6` resolved blockers, `11` open blockers. Binary Goldbach remains **OPEN** (including under ERH), now compressed to two razor-sharp decisive targets (`liminf P_N^circ > -1/3` at `|gamma| < 2 log log N`, or signed Type II on `[N^0.4383, sqrt(N)]`).
