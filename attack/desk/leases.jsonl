@@ -36,3 +36,7 @@
 {"ts": "2026-11-27T18:28:51Z", "event": "lease", "lease": {"lease_id": "760bdcde13c34bcd8f69dee0b57517d4", "blocker_id": "B-011", "holder": "astra-w5-lowzeros-qsum", "expires": "2026-11-27T19:13:51Z", "beats": 0, "max_beats": 12, "created": "2026-11-27T18:28:51Z"}}
 {"ts": "2026-11-27T18:29:17Z", "event": "release", "lease_id": "cd616830fff747549ed3c245b07644c8", "blocker_id": "B-004", "holder": "astra-w5-ratios-lee", "reason": "missing_lemma"}
 {"ts": "2026-11-27T18:40:47Z", "event": "release", "lease_id": "760bdcde13c34bcd8f69dee0b57517d4", "blocker_id": "B-011", "holder": "astra-w5-lowzeros-qsum", "reason": "missing_lemma"}
+{"ts": "2026-11-27T18:59:59Z", "event": "lease", "lease": {"lease_id": "d37b80c85fdb48d7aa9f86884b4d94c4", "blocker_id": "B-012", "holder": "astra-w6-gl2-det", "expires": "2026-11-27T19:44:59Z", "beats": 0, "max_beats": 12, "created": "2026-11-27T18:59:59Z"}}
+{"ts": "2026-11-27T19:00:00Z", "event": "lease", "lease": {"lease_id": "007c17818d5b482f9b0072f9a1b069d4", "blocker_id": "B-005", "holder": "astra-w6-ff-transfer", "expires": "2026-11-27T19:45:00Z", "beats": 0, "max_beats": 12, "created": "2026-11-27T19:00:00Z"}}
+{"ts": "2026-11-27T19:07:11Z", "event": "release", "lease_id": "d37b80c85fdb48d7aa9f86884b4d94c4", "blocker_id": "B-012", "holder": "astra-w6-gl2-det", "reason": "missing_lemma"}
+{"ts": "2026-11-27T19:08:15Z", "event": "release", "lease_id": "007c17818d5b482f9b0072f9a1b069d4", "blocker_id": "B-005", "holder": "astra-w6-ff-transfer", "reason": "missing_lemma"}

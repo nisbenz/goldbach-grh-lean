@@ -61,7 +61,7 @@
       "why": "The repo's ERH/Grand-RH attack records a parity survival theorem that blocks naive extensions.",
       "route": "proof/strong_goldbach_erh_attack.md; subcritical z=N^(2/9) and Chen-set one-sided reductions.",
       "assigned_to": null,
-      "note": "Astra Waves 3 & 4 (B004_B015_W3_PERSISTENT_THRESHOLD_PUSH.md, B005_B012_W4_DECISIVE_PARITY_PHASE_DIAGRAM.md): Wave 3 proved beta=1/5 admissible (+81.706% unsigned baseline); Wave 4 proved exact switched-sieve parity conservation M(beta,1^-)=-2 I_3(1/beta) <= 0 (sup=0 on [1/3,1/2], theta>1 impossible on prime moduli q>N), and proved at unconditional BV Type I level a signed Type II comparison on N^0.4383 <= d <= sqrt(N) suffices (obstruction at 0.475602)."
+      "note": "Astra Wave 6 Strike 2A (B005_W6_FUNCTION_FIELD_TRANSFER_STRIKE.md, parent re-verified 586 exact cases): transferred GWX's unconditional function-field cutoff identity (m4.tex:2778-3265) to Z; proved short divisors ALREADY yield full N*S(N)+o(N) at unconditional BV cutoff; proved long-divisor tail T_D escapes LWW/Lichtman semiprime zero-support (>=1/2-o(1) squarefree quotients hit every separated prime band); proved rowwise saving budget requires L^(-2) (centered weight) or aggregate limsup T_D/(N*S(N))<1 (eq. 5), or uniform power saving on two affine forms d=u+qt, z=v-kt of determinant +N (eq. 9). GWX Reciprocal Ratios/Chowla (m4.tex:3475-3577) gives only fixed-h same-slope cancellation. Remains open."
     },
     {
       "id": "B-006",
@@ -145,7 +145,7 @@
       "why": "Weights a_n^\u00b1 = K^-1 w(n)(1\u00b1lambda(n)) pass divisor tests to any level <1 under RH yet the plus sequence has no primes \u2014 sieve-only routes cannot distinguish primes.",
       "route": "Bilinear test sum a_{dk} lambda(d)lambda(k) with strict domination; or independent two-form theorem for genuine Lambda coefficients. Source: strong_goldbach_research.md blocker 3.",
       "assigned_to": null,
-      "note": "Astra Wave 5 Strike 1A (B012_W5_LICHTMAN_SEMIPRIME_STRIKE.md, parent re-verified): proved Lichtman (arXiv:2611.28392v1) exact partition misses every semiprime (needs >=3k>=3 intervals; semiprime hits <=2) and reflection changes determinant from a-b to N(b-a) outside cutoff; proved central semiprime Selberg square optimal coefficient has infimum exactly 2 under prime EH (S_delta/HL_delta -> 2 on any exception sequence); direct Cauchy-Schwarz has o(1) diagonal and needs normalized off-diagonal < 4, which Pascadi (2611.34917v1) does not supply. Remains open."
+      "note": "Astra Wave 6 Strike 2B (B012_W6_GL2_DETERMINANT_STRIKE.md, parent re-verified 41 local-density cases in 0.046s): proved under prime EH that s_N^2-o(1) <= o_N <= 2*s_N+o(1) uniformly in even N, so normalized off-diagonal o_N < 4 is strictly equivalent to s_N < 2 and optimized cofactor sieve squares have infimum exactly 4; proved on the 4-prime determinant q2*p1 - q1*p2 = N(q2-q1) that h*q1^(-1) = -N (mod q2), so the direct Poisson phase loses its inverse dependence on q1 and collapses the GL_2 spectral twist back to three correlated prime weights. Open across unconditional, Selberg (theta2=0), and GL_2 Grand RH."
     },
     {
       "id": "B-013",
