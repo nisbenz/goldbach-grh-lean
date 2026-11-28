@@ -1,6 +1,6 @@
 {
   "schema": "goldbach-attack/claims v1",
-  "updated_at": "2026-11-27T16:35:00Z",
+  "updated_at": "2026-11-28T04:17:00Z",
   "claims": [
     {
       "id": "GB-BINARY",
@@ -225,6 +225,22 @@
       "hypothesis": "none (200-bit rigorous Arb interval arithmetic)",
       "source": "attack/audit/B005_B012_W4_DECISIVE_PARITY_PHASE_DIAGRAM.md; parent re-ran /tmp/astra_w4_sieve/phase.py (0.327s, exit 0)",
       "notes": "Certifies the numerical integral values and roots only; the analytic Ford-Maynard theorem applications and shifted-prime Type II input remain research/open."
+    },
+    {
+      "id": "GB-W7-TAIL-BARRIER",
+      "statement": "GoldbachAttack.reflection_energy_split + fComp_zero_goldbach + fComp_progression_diff_le + fComp_shortDivisorSum_close: deterministic prime-supported f_comp agrees with Lambda_pr on every progression d|(n-x) up to log n and matches S_D up to D*(log n)^2 while having zero prime pairs",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/TailBarrier.lean; attack/audit/B013_W7_FIFTH_LEAF_CREATIVE_ATTACK.md",
+      "notes": "Kernel-verified with zero errors, zero sorry, and #print axioms strictly [propext, Classical.choice, Quot.sound]. Proves no bound on the 5th leaf T_D(n) using only short progressions d <= D can separate true primes from f_comp."
+    },
+    {
+      "id": "GB-W8-MELLIN-EULER",
+      "statement": "GoldbachAttack.bilateral_mellin_euler_goldbach_criterion + oneSided_mellin_euler_goldbach_criterion + bilateralEuler_eq_crt_sum + bilateralEuler_hyperbola_split: unconditional prime-free bilateral CRT sign-separation criterion (Xi_n^circ(s1) - Xi_n^circ(s2) > P_pp_bilat => Strong Goldbach, for 0 < s1 <= s2 <= 1/log n) and one-sided criterion (Phi_n^circ(s1) - Phi_n^circ(s2) > P_pp_one => Strong Goldbach, for 0 < s1 <= s2 <= 2/log n)",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/MellinEulerCriterion.lean; attack/audit/B013_W8_MELLIN_EULER_BREAKTHROUGH.md",
+      "notes": "All 10 theorems kernel-verified (exit 0, zero warnings, zero sorry, #print axioms strictly [propext, Classical.choice, Quot.sound]). Reduces Strong Goldbach without primes or Bombieri-Vinogradov to evaluating the bilateral CRT Euler product difference Xi_n^circ(s1)-Xi_n^circ(s2) (long-range binary Mobius correlation d1*d2 > Y). Strong Goldbach itself remains OPEN."
     }
   ]
 }
