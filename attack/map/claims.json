@@ -1,6 +1,6 @@
 {
   "schema": "goldbach-attack/claims v1",
-  "updated_at": "2026-11-28T04:17:00Z",
+  "updated_at": "2026-11-28T04:36:00Z",
   "claims": [
     {
       "id": "GB-BINARY",
@@ -241,6 +241,14 @@
       "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
       "source": "attack/lean/Goldbach/MellinEulerCriterion.lean; attack/audit/B013_W8_MELLIN_EULER_BREAKTHROUGH.md",
       "notes": "All 10 theorems kernel-verified (exit 0, zero warnings, zero sorry, #print axioms strictly [propext, Classical.choice, Quot.sound]). Reduces Strong Goldbach without primes or Bombieri-Vinogradov to evaluating the bilateral CRT Euler product difference Xi_n^circ(s1)-Xi_n^circ(s2) (long-range binary Mobius correlation d1*d2 > Y). Strong Goldbach itself remains OPEN."
+    },
+    {
+      "id": "GB-W9-ANTISYM-HYPERBOLA",
+      "statement": "GoldbachWave9.bilateral_antiSym_quadrant_goldbach_criterion + bilateral_oddSqfree_goldbach_criterion + bilateralPrimePowerErr_le + antiSymFactor_eq_zero_of_squarefree_even: unconditional anti-symmetric hyperbola criterion SS_D + 2*SL_D + LL_D > 8*(sqrt n * log2 n)*(log n)^2 => Strong Goldbach (for 0 < s1 <= s2 <= 2/log n, any cutoff D) and zero-error odd-squarefree criterion Xi_n^Q(s1) > Xi_n^Q(s2) => Strong Goldbach (P_pp = 0 identically)",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/AntiSymmetricEuler.lean; attack/audit/B013_W9_ANTISYMMETRIC_HYPERBOLA_BREAKTHROUGH.md",
+      "notes": "All 10 theorems kernel-verified (exit 0, zero warnings, zero sorry, #print axioms strictly [propext, Classical.choice, Quot.sound]). Amplifies Wave 8 signal from Theta(n/log n) to full Theta(n), doubles sigma range to 2/log n, proves explicit P_pp bound, and isolates remaining open problem into LL_D > -0.80*n (non-o(n) threshold vs parity extreme -0.985*n). Strong Goldbach remains OPEN."
     }
   ]
 }
