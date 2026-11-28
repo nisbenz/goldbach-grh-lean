@@ -1,6 +1,6 @@
 {
   "schema": "goldbach-attack/claims v1",
-  "updated_at": "2026-11-28T04:54:00Z",
+  "updated_at": "2026-11-28T05:10:00Z",
   "claims": [
     {
       "id": "GB-BINARY",
@@ -265,6 +265,222 @@
       "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
       "source": "attack/lean/Goldbach/RegionIIIParity.lean; attack/audit/B013_W11_REGION_III_VAUGHAN_PARITY.md",
       "notes": "All 6 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Quantitatively establishes that ~100% of the Region III parity gap lives in Vaughan's (Type II x Type II) bilinear block (+1.165n of +0.959n at n=50002) and proves breaking Liouville parity in Region III is both necessary and sufficient for the hyperbola criterion. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W12-KLOOSTERMAN-CLEARING",
+      "statement": "GoldbachWave12.kloosterman_reciprocity_mod_int + archimedean_reciprocity_factor_le_one + elem_weil_clears_asymmetric_point + bettin_chandee_clears_balanced_diagonal + optimal_kloosterman_clears_below_one + four_region_split: exact Kloosterman reciprocity mod Z, O(1) archimedean phase at H=D1*D2/n, unconditional Weil (1948) asymmetric wedge up to (0.80,0.40) and Bettin-Chandee (2018) balanced diagonal clearing up to alpha < 17/33 (17.4% of Region III cleared unconditionally), optimal Kloosterman limit max(alpha1,alpha2) < 1, and exact 4-region hyperbola partition",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/KloostermanMaster.lean; attack/audit/B013_W12_KLOOSTERMAN_BETTIN_CHANDEE_CLEARING.md",
+      "notes": "All 6 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Shows Poisson summation in the smooth cofactor k2 breaks Liouville parity and clears 17.4% of Region III unconditionally (including the balanced diagonal (1/2,1/2)), isolating the irreducible core to small-cofactor binary Chowla correlations (max(alpha1,alpha2) -> 1). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W13-DAMPED-BOUNDARY",
+      "statement": "GoldbachWave13.dampedFactor_eq_closed_form + damped_bilateral_composite_mono + damped_cofactor_weight_bound + damped_k11_slice_unsigned_bound + damped_bilateral_goldbach_criterion: boundary-damped anti-symmetric kernel A~_{n,s}(m) = F_s(m) - n^(-s)*K_s(m) preserves composite monotonicity on (0, 1/log n] and full Theta(n) Goldbach signal (+0.908n at n=50002) while proving 0 <= (d^(-s)-(nk)^(-s))/s <= log(n/x) + 2*log k (free of log n at fixed k!) and reducing the k1=k2=1 binary-Chowla slice by (log n)^2 (250x at n=50002, from -6.8639n to -0.0274n), evacuating 100% of negative parity mass out of max(alpha1,alpha2) > 0.90",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/DampedBoundaryEuler.lean; attack/audit/B013_W13_DAMPED_BOUNDARY_EULER.md",
+      "notes": "All 5 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W14-SECOND-ORDER-DAMPED",
+      "statement": "GoldbachWave14.secondOrderFactor_eq_closed_form + secondOrder_cofactor_weight_bound + secondOrder_k11_slice_o_n_bound + secondOrder_bilateral_composite_mono + secondOrder_bilateral_goldbach_criterion: second-order boundary-damped anti-symmetric kernel C_{n,s}(m) = F_s(m) - 2*n^(-s)*K_s(m) + n^(-2s)*F_{-s}(m) satisfies exact square decomposition w_2(d,k) = d^(-s)*(1-(d/n)^s)^2 + 2*n^(-s)*(1-k^(-s)), composite monotonicity on (0, 2/(3*log n)], unconditional Goldbach criterion with doubled asymptotic prime-pair signal (1.1693*S(n)*n >= 1.5439*n), and unconditional O(n/(log n)^2) = o(n) obliteration of the entire k1=k2=1 binary-Chowla slice with ZERO Mobius cancellation (300,000x parity drop at n=50002, from -6.8639n to -0.000023n)",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/SecondOrderDampedEuler.lean; attack/audit/B013_W14_SECOND_ORDER_DAMPED_EULER.md",
+      "notes": "All 5 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Remaining small-cofactor core (2 <= k1,k2 <= K) reduces identically to the Mobius-dual truncated von Mangoldt convolution M_K(n) = sum L_K^*(x)*L_K^*(n-x). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W15-MOBIUS-DUAL-CORE",
+      "statement": "GoldbachWave15.mobiusDual_add_tail_eq_vonMangoldt + mobiusDual_eq_zero_of_prime_gt + mobiusDual_conv_le_l2_norm + secondOrder_weight_approx_log_k + secondOrder_mixed_k1_strip_bound + secondOrder_small_cofactor_eq_mobiusDual_add_err: proves exact Mobius-dual split L_{<=K}^*(x) + L_{>K}^*(x) = Lambda(x), exact prime annihilation L_{<=K}^*(p) = 0 for p > K, L^2 Cauchy-Schwarz budget |M_K(n)| <= sum (L_{<=K}^*(x))^2, sharp O(sigma) weight approximation |w_2/sigma - 2*n^(-sigma)*log k| <= sigma*((log(n/d))^2 + (log k)^2), unconditional O(n*(log K)^2/log n) = o(n) obliteration of the entire mixed k1=1, 1<=k2<=K strip, and exact reduction of the entire small-cofactor corner S_{<=K}(n,s1) - S_{<=K}(n,s2) = 4*(n^(-2s1)-n^(-2s2))*M_K(n) + O(n*(log K)^4/log n)",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/MobiusDualCore.lean; attack/audit/B013_W15_MOBIUS_DUAL_CORE.md",
+      "notes": "All 6 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Distills the entire small-cofactor obstruction of Strong Goldbach in C_{n,s} to breaking parity M_K(n) > -(1-eps)*S(n)*n by any eps > 0 (smoothed L^2 budget O(n log log n) at K=(log n)^C). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W16-DIRECT-ABEL-BV",
+      "statement": "GoldbachWave16.congruence_div_gcd_iff + coprime_residue_split + direct_bv_modulus_improves_after_gcd + abel_summation_antitone_bound + w2_antitone_in_d1 + direct_bv_subsumes_regionII + direct_bv_reaches_boundary_half + direct_bv_eh_clears_off_diagonal + five_region_secondOrder_split + global_k1_slice_cauchy_schwarz_bound: proves exact GCD/coprime-residue reduction for d2|(n-k1*d1) improving BV ratio by g^2*h, discrete Abel summation for antitone weights and antitonicity of w2 in d1, unconditional Direct Abel-BV clearing of B < A/2 (strictly subsuming Region II, reaching (1, 1/2), and nearly doubling unconditional Region III clearing to 30.16% / 22.98% tight), EH(theta) off-diagonal clearing as theta->1, exact 5-region split of C_{n,s}, and unconditional O(n/sqrt(log n))=o(n) Cauchy-Schwarz obliteration of the GLOBAL k1=1 slice across ALL d2|(n-x)",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/DirectAbelBV.lean; attack/audit/B013_W16_DIRECT_ABEL_BV.md",
+      "notes": "All 10 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W17-REGION-I-CRT-BOUND",
+      "statement": "GoldbachWave17.unweighted_ap_discrepancy_le_one + weighted_ap_discrepancy_le + crt_weighted_discrepancy_le + tv_prod_monotone_antitone_le + regionI_secondOrder_crt_error_bound: proves unweighted AP discrepancy <= 1, weighted AP discrepancy <= |f(b)| + TV(f) via discrete Abel summation, exact weighted CRT discrepancy for d1|x and d2|(n-x), total-variation bound <= 3*U*V for monotone x antitone products, and explicit unconditional Region I error bound |regI_C2 - regI_C2_CRT| <= 3*(sigma*(log n)^2 + 2*log n)^2 * |H_Y| = O(Y*(log n)^3) = o(n) for Y = n/(log n)^4",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/RegionICRTBound.lean; attack/audit/B013_W17_REGION_I_CRT_BOUND.md",
+      "notes": "All 5 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Completes formalization of the weighted Region I CRT error for Wave 14's C_{n,s}. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W18-ZROUGH-SMALL-COFACTOR-KILL",
+      "statement": "GoldbachWave18.zRough_divisor_gt_of_ne_one + zRough_prime_of_le_sq + zRough_mobiusDual_eq_neg_mu_sum_primes + zRough_mobiusDual_sq_eq_prime_pair_sum + zRough_mobiusDual_conv_le_prime_counting + zRough_mertens_margin_strict + zRough_filter_goldbach_criterion: filtering C_{n,s} to bilaterally z-rough pairs R_z(n) preserves 100% of prime pairs p,q > z and 100% of the Region I CRT main term S(n)*n while deleting every cofactor 2 <= k <= z, forcing every k in (z, z^2] to be prime, reducing L_{<=z^2}^*(x) on squarefree x in R_z(n) to -mu(x)*sum_{p|x, z<p<=z^2} log p, and beating the ENTIRE small-cofactor core |M_{z^2}^{R_z}(n)| unconditionally by pure Cauchy-Schwarz with ZERO Mobius cancellation ((5/2)*e^(-2*gamma) = 0.78809 < 89/100 < 1, margin +0.2119*S(n)*n)",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/ZRoughSmallCofactorKill.lean; attack/audit/B013_W18_ZROUGH_SMALL_COFACTOR_KILL.md",
+      "notes": "All 7 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Collapses the two open barriers of Waves 12-17 into one single open barrier: interior cancellation on z-rough pairs with min(k1,k2) > z and max(k1,k2) > z^2. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W19-SELBERG-WEIGHTED-EULER",
+      "statement": "GoldbachWave19.selbergWeight_nonneg + selbergWeight_eq_one_of_prime_gt + selbergWeight_eq_lcm_sum + selberg_regionI_crt_modulus_bound + selberg_linear_suppression_at_prime_dvd + selberg_abs_le_log_ratio_mul_divisors + selbergWeighted_mobiusDual_conv_le_l2 + selbergWeighted_goldbach_criterion: weighting Wave 14's C_{n,s} by Selberg's non-negative square W_R(x) = (sum_{a|x, a<=R} mu(a)*(1 - log a / log R))^2 preserves W_R(p)=1 on all primes p>R and pointwise composite monotonicity, keeps the bilateral CRT modulus strictly polynomial (<= R^4 * d1 * d2, enabling R = n^delta with zero exponential primorial blowup), proves exact pairing cancellation |S_R(p*m)| <= (log p / log R) * tau_{<=R}(m) suppressing every small prime cofactor p <= R by (log p / log R)^2, and gives weighted Cauchy-Schwarz L^2 norm ~0.23-0.32 * S(n) * n < 1.00 * S(n) * n all the way to the power-of-n corner K = R = n^delta",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/SelbergWeightedEuler.lean; attack/audit/B013_W19_SELBERG_WEIGHTED_EULER.md",
+      "notes": "All 8 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Eliminates the exponential primorial cap of Wave 18 and pushes small-cofactor suppression to a full power of n (K = R = n^delta). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W20-MASTER-REDUCTION",
+      "statement": "GoldbachMaster.master_exact_six_region_decomposition + strong_goldbach_master_reduction + master_budget_closes_of_interior_saving: unifies Waves 14-19 into one end-to-end 6-region Strong Goldbach reduction theorem valid for any non-negative bilateral weight W >= 0 (unfiltered, z-rough, or Selberg square W_R), proving that RegI > P_pp^W + |Reg_BV| + |Reg_Kl| + |Reg_{k=1}| + |Reg_corner(<=K)| + |Reg_open(>K)| implies exists p q prime with p + q = n",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/StrongGoldbachMaster.lean; attack/audit/B013_W20_STRONG_GOLDBACH_MASTER.md",
+      "notes": "All 3 master theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Synthesizes all 90 kernel-checked theorems across Waves 7-20 into one unified reduction. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W21-VAUGHAN-TYPE-I",
+      "statement": "GoldbachWave21.linear_congruence_unique_mod + typeI_progression_weighted_error_le + typeI_box_total_error_bound + typeI_clears_beyond_half + typeI_tight_regionIII_area_exact: proves unconditionally that for the Vaughan Type I component d1 = u*v (u <= U = D1^theta_I, v smooth), elementary congruence counting + discrete Abel summation clears B < (1 - theta_I)*A with error <= C*M_f*K1*U*D2, punching past Direct Abel-BV's B = A/2 barrier to (1, 2/3) at theta_I = 1/3 and clearing exact rational area 2/5 = 40.00% of tight Region III (2.8x Direct Abel-BV's 1/7)",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/VaughanTypeIClearing.lean; attack/audit/B013_W21_VAUGHAN_TYPE_I_CLEARING.md",
+      "notes": "All 5 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Leaves Vaughan (Type II x Type II) as the sole block stuck at B = A/2. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W22-BILINEAR-LARGE-SIEVE",
+      "statement": "GoldbachWave22.w2_exact_rank2_separation + two_step_gcd_congruence_reduction + bilinear_large_sieve_bound_algebra + bilinear_large_sieve_glues_with_wave16_zero_gap + bilinear_ls_tight_regionIII_area_exact + wright1_punches_into_half_square + secondOrder_pure_square_decomposition + pure_square_cofactor_bound: keeping k1 inside x = k1*d1 ~ n with exact rank-2 separation of w2 and exact two-step GCD reduction clears 100% of {min(alpha1, alpha2) < 1/2} via Multiplicative Large Sieve glued with zero gap to Wave 16 Direct Abel-BV, jumping black-box clearing 2.5x from 1/7 (14.29%) to 5/14 (35.71%) of Tight Region III and collapsing the remaining open core to the pure square [1/2, 1]^2 (k1, k2 < sqrt(n)); verifies Wright I (arXiv:2604.25177v2) punches strictly inside [1/2, 1]^2 up to B < 17/33 along A -> 1",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/BilinearLargeSieve.lean; attack/audit/B013_W22_BILINEAR_LARGE_SIEVE.md",
+      "notes": "All 8 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W23-DISPERSION-DUAL-TYPE-I",
+      "statement": "GoldbachWave23.dual_typeI_box_error_bound + typeI_x_typeI_elementary_areas_exact + dispersion_cauchy_schwarz_reduction + dispersion_double_congruence_crt + dispersion_reciprocity_phase_mod_int: proves unconditionally that Dual Linear Diophantine congruence counting clears (Type I x Type I) on (1-theta1)A + (1-theta2)B > 1 (clearing A+B > 3/2 including 100% of the (1,1) corner at theta=1/3, exact 3/5 = 60.00% of [1/2,1]^2 and 26/35 = 74.29% of Tight Region III with ZERO Kloosterman sums), and proves the exact Linnik Dispersion Cauchy-Schwarz reduction, double-congruence CRT uniqueness, and Dispersion-Kloosterman reciprocity phase separation mod Z for (Type II x Type II)",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/DispersionAndDualTypeI.lean; attack/audit/B013_W23_DISPERSION_AND_DUAL_TYPE_I.md",
+      "notes": "All 5 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W24-SINGULAR-SERIES-MAIN-TERM",
+      "statement": "GoldbachWave24.bilateral_crt_local_factor_eq_singular_series + weierstrass_prod_one_sub_ge + even_recip_sq_sum_lt_one_sixth + goldbach_singular_series_gt_five_fourths + secondOrder_linear_term_eq_two_vonMangoldt + secondOrder_deriv_term_eq_neg_two_log_vonMangoldt: proves prime-by-prime identity between normalized bilateral CRT local Euler factors and the Hardy-Littlewood Goldbach singular series, unconditional uniform lower bound S_P(n) > 5/4 = 1.25 over all even n and finite prime sets S via Weierstrass + telescoping sum < 1/6, and exact sigma -> 0+ bridge proving both the sigma^0 (= 2*Lambda(m)) and sigma^1 (= -2*log(m)*Lambda(m)) coefficients of C_{n,sigma}(m)/sigma vanish identically on all composites",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/SingularSeriesMainTerm.lean; attack/audit/B013_W24_SINGULAR_SERIES_MAIN_TERM.md",
+      "notes": "All 6 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W25-PURE-SQUARE-FOURIER-DIFFSQ",
+      "statement": "GoldbachWave25.weighted_diff_sq_cauchy_schwarz + discrete_fourier_orthogonality + pure_square_fourier_representation + pure_square_parseval_mean_square_bound + parity_weight_nonpos_of_composite_nonpos + master_pure_square_diffSq_goldbach_criterion: proves exact reflection-symmetric weighted difference-of-squares Cauchy-Schwarz bound <= ||G1 - G2||_{L2(W)} * ||G1 + G2||_{L2(W)} (4.4x tighter than ||G1||_2^2 + ||G2||_2^2, beating PureSquare on n^0.16-rough pairs with zero Mobius cancellation), exact discrete circle-method Fourier representation & Major/Minor arc Parseval mean-square bound, exact Liouville parity non-positivity for composite-monotone kernels, and upgraded Master Goldbach criterion",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/PureSquareFourierAndDiffSq.lean; attack/audit/B013_W25_PURE_SQUARE_FOURIER_DIFFSQ.md",
+      "notes": "All 6 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W26-VINOGRADOV-MINOR-ARCS",
+      "statement": "GoldbachWave26.distToInt_norm_e_sub_one_ge + geometric_exp_sum_bound + bilinear_exp_sum_min_bound + vinogradov_block_harmonic_bound + exceptional_set_markov_bound: proves Jordan inequality 4*||theta||_Z <= ||e(theta) - 1||, exact geometric sum bound <= min(K, 1/(2*||theta||_Z)), bilinear exponential sum triangle reduction, exact Vinogradov block harmonic bound <= 3*K + 4*q*H_{q/2} for |alpha - a/q| <= 1/q^2, and unconditional exceptional-set Markov counting bound completing the GRH-free O(N/(log N)^A) exceptional-set engine",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/VinogradovMinorArcs.lean; attack/audit/B013_W26_VINOGRADOV_MINOR_ARCS.md",
+      "notes": "All 5 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W27-SIMPLEX-SELBERG-WEIGHT",
+      "statement": "GoldbachWave27.simplexSelberg_nonneg + simplexSelberg_symm + simplexSelberg_eq_one_of_prime_pair_gt + simplexSelberg_bilinear_expansion + simplexSelberg_crt_modulus_bound + simplex_selberg_variational_factor_two + symm_2d_diff_sq_cauchy_schwarz + simplexSelberg_goldbach_criterion: replaces Wave 19's 1D product Selberg weight [0,1/2]^2 with the 2D Simplex Maynard-Selberg weight W_{R2}^{(2D)}(x,y) = (sum_{a1|x, a2|y, a1*a2<=R2} mu(a1)*mu(a2)*(1 - log(a1*a2)/log R2)^2)^2 at identical CRT modulus R2^2 = R^4, proving non-negativity, reflection symmetry, 100% prime-pair preservation above R2, exact 4-fold LCM expansion with CRT modulus <= R2^2*d1*d2, exact 2x variational density gain (E_prod/E_simp = 4/2 = 2), 2.5x tighter Pure-Square L^2 budget (0.40 vs 1.04 at R2=n^0.50; already 0.767 < 1 at R2=n^0.40 inside Region I CRT), and full symmetric 2D Difference-of-Squares Goldbach criterion",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/SimplexSelbergWeight.lean; attack/audit/B013_W27_SIMPLEX_SELBERG_WEIGHT.md",
+      "notes": "All 8 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W28-HEATH-BROWN-WELL-FACTORABLE",
+      "statement": "GoldbachWave28.truncMoebius_remainder_vanishes + conv_pow_vanishes_le_pow + heath_brown_moebius_identity + greedy_well_factorable_split + greedy_triply_well_factorable_split + well_factorable_three_fifths_area_exact: proves Heath-Brown's general k-fold identity for mu(d) on d <= U^k from scratch in ArithmeticFunction Int, proves exact greedy well-factorable and triply well-factorable grouping for any list of factors <= B (certifying the structural hypothesis of BFI 4/7 and Maynard II 3/5 on every bounded-factor Heath-Brown component of mu(d2)), and verifies exact rational geometry (clearing min(alpha1,alpha2) < 3/5 shrinks the core to [3/5,1]^2, clearing 9/25 = 36.00% of [1/2,1]^2 and 103/175 = 58.86% of Tight Region III)",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/HeathBrownWellFactorable.lean; attack/audit/B013_W28_HEATH_BROWN_WELL_FACTORABLE.md",
+      "notes": "All 6 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W29-SEMIPRIME-ANNIHILATION-SWITCH",
+      "statement": "GoldbachWave29.semiprime_divisors_gt_cutoff + cubeRough_primeFactorsList_length_le_two + semiprime_chen_switching_sum + moebius_cofactor_product_eq_mu_sq + balanced_semiprime_annihilation_geometry_exact: proves 100% annihilation of balanced semiprimes (p <= q <= M) from PureSquare_{>M} and single-term collapse {q} for unbalanced semiprimes, Omega(x) <= 2 for all n^(1/3)-rough x < n, exact Chen-switching double-counting identity, exact L^2 Mobius factorization mu(x/k1)*mu(x/k2) = mu(r1)*mu(r2)*1_{(m,r1*r2)=1}*mu(m)^2 (zero Mobius oscillation in m), and exact [3/5,1]^2 balanced-semiprime band eliminating 3/5 = 60% of the [1/3,1/2] semiprime range",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/SemiprimeAnnihilationAndSwitch.lean; attack/audit/B013_W29_SEMIPRIME_ANNIHILATION_SWITCH.md",
+      "notes": "All 5 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W30-SQUAREFREE-AFFINE-CHOWLA",
+      "statement": "GoldbachWave30.moebius_sq_eq_sum_sq_divisors + squarefree_count_exact_identity + squarefree_count_error_le_sqrt + affine_chowla_parametrization + affine_chowla_determinant_identity + affine_chowla_length_lower_bound_on_35_square: proves (mu m)^2 = sum_{d^2|m} mu(d) via multiplicativity, exact Dirichlet hyperbola squarefree-counting identity and O(sqrt M) error bound with constant 1, exact affine integer parametrization d1 = d10 + k2'*t, d2 = d20 - k1'*t of k1*d1 + k2*d2 = n with non-degenerate determinant -(n/g), and uniform polynomial length n/(k1*k2) >= n^(1/5) across every pair in Wave 28's remaining [3/5,1]^2 square",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/SquarefreeAndAffineChowla.lean; attack/audit/B013_W30_SQUAREFREE_AFFINE_CHOWLA.md",
+      "notes": "All 6 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W31-COFACTOR-SHIFT-DISPERSION",
+      "statement": "GoldbachWave31.cofactor_shift_dispersion_split + cofactor_shift_diagonal_count_bound + cofactor_shift_diagonal_exponents_clear_interior + off_diagonal_elimination_identity + cofactor_shift_any_o1_saving_suffices: Cofactor-Shift Dispersion (Cauchy-Schwarz in d1 eliminating mu(d1)) splits |A(n)|^2 <= |D1|*(Diag_{k1=k1'} + OffDiag_{k1!=k1'}), proves exact diagonal AP congruence count clearing 100% of the k1=k1' diagonal across all of (1/2,1)^2 with zero Mobius cancellation, proves exact off-diagonal shift elimination k1'*k2*d2 - k1*k2'*d2' = (k1'-k1)*n != 0, and reduces clearing all of (1/2,1)^2 to any o(1) saving in the parity-breaking 4-parameter averaged binary Chowla sum OffDiag (verified 395x drop vs parity on n=100002, with CS=5130 < 9064=|A_par|)",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/CofactorShiftDispersion.lean; attack/audit/B013_W31_COFACTOR_SHIFT_DISPERSION.md",
+      "notes": "All 5 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W32-FAREY-MOEBIUS-DUALITY",
+      "statement": "GoldbachWave32.progression_eq_finite_fourier_sum + farey_primitive_partition_sum + moebius_mul_eq_ite_coprime + farey_moebius_duality_exact + farey_moebius_frequency_localization_bound: proves the exact algebraic Farey-Mobius duality identity sum_{d in S} mu(d) sum_{y=n(mod d)} g(y) = sum_{q<=D_max} (mu(q)/q) * M_q(S) * sum_{a<q,(a,q)=1} g_hat(a/q) e(-a*n/q) where M_q(S) = sum_{q*m in S,(m,q)=1} mu(m)/m, proving unconditionally that not only major arcs q <= (log n)^C but the entire low/medium spectrum q <= D1/(log n)^C is damped by PNT for mu, localizing 100% of [1/2,1]^2 to the top primitive Farey shell q in (D1/(log n)^C, 2*D1]",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/FareyMoebiusDuality.lean; attack/audit/B013_W32_FAREY_MOEBIUS_DUALITY.md",
+      "notes": "All 5 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Completes 156 theorems + 121 helper lemmas = 277 verified declarations across 26 files in Waves 7-32. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W33-RAMANUJAN-DUALITY",
+      "statement": "GoldbachWave33.ramanujanSum_eq_complex_exp_sum + ramanujanSum_prime + ramanujan_local_euler_eq_goldbach_singular_series + ramanujan_sum_orthogonality + divisor_moebius_ramanujan_expansion_exact + ramanujan_parseval_energy: proves Kluyver's identity c_q(m) = sum_{d|gcd(q,m)} d*mu(q/d) = sum_{(a,q)=1} e(a*m/q), exact prime-by-prime identity 1 + c_p(n)/(p-1)^2 = localSingularFactor(n,p) linking Ramanujan sums to Hardy-Littlewood's Goldbach singular series, exact orthogonality sum_{m<Q} c_{q1}(m)*c_{q2}(m) = 1_{q1=q2}*Q*phi(q1) and Ramanujan Parseval energy on Z/QZ, and the purely real zero-complex-number finite Ramanujan expansion sum_{d in S, d|x} mu(d) = sum_{q<=D_max} (mu(q)/q)*M_q(S)*c_q(x)",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/RamanujanSingularSeriesDuality.lean; attack/audit/B013_W33_RAMANUJAN_SINGULAR_SERIES_DUALITY.md",
+      "notes": "All 6 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Completes 162 theorems + 128 helper lemmas = 290 verified declarations across 27 files in Waves 7-33. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W34-RAMANUJAN-FAREY-CONV",
+      "statement": "GoldbachWave34.ramanujan_conv_period_exact + ramanujan_conv_interval_exact + ramanujanSum_abs_le_sum_divisors_gcd + ramanujan_diagonal_low_bound + ramanujan_diagonal_tail_bound + farey_distinct_separation_lower_bound + selberg_ramanujan_reflection_identity: proves exact full-period Ramanujan convolution sum_{m<Q} c_{q1}(m)*c_{q2}(n-m) = 1_{q1=q2}*Q*c_{q1}(n), exact finite-interval Ramanujan-Farey convolution decomposition into exact singular-series diagonal + off-diagonal Farey aliasing bilinear form, exact Kluyver diagonal bounds sum_{q<=N} |c_q(n)|/q^2 <= 2*sigma_{-1}(n) and sum_{q in (L,N]} |c_q(n)|/q^2 <= (2/L)*tau(n) (unconditionally eliminating 100% of the Ramanujan diagonal of PureSquare at L=n^(1/4) from PNT for mu alone), exact Farey separation >= 1/(q1*q2) mod Z, and the exact Selberg-Ramanujan reflection identity",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/RamanujanFareyConvolution.lean; attack/audit/B013_W34_RAMANUJAN_FAREY_CONVOLUTION.md",
+      "notes": "All 7 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Completes 169 theorems + 144 helper lemmas = 313 verified declarations across 28 files in Waves 7-34. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W35-COFACTOR-LATTICE-CHOWLA",
+      "statement": "GoldbachWave35.coupled_dispersion_modulus_bounds + coupled_dispersion_step_dvd + coupled_dispersion_lattice_parametrization + coupled_dispersion_chowla_determinant + coupled_dispersion_chowla_nondegenerate + progression_count_in_dyadic_ge + chowla_poly_length_geometry_exact: proves exact 3-variable lattice parametrization d1=d10+M*t, d2=d20-s2*t, d2'=d20'-s2'*t with M=lcm(k2/gcd(k1,k2), k2'/gcd(k1',k2')) <= k2*k2', exact binary Chowla determinant k2*k2'*det = M*(k1-k1')*n proving 100% off-diagonal non-degeneracy (det != 0 whenever k1 != k1' and n != 0), exact progression count lower bound >= D1/M, and exact rational geometry proving max(A+2B, 2A+B) > 2 covers 5/6 (83.33%) of [1/2,1]^2 and 23/24 (95.83%) of [3/5,1]^2",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/CofactorLatticeChowla.lean; attack/audit/B013_W35_COFACTOR_LATTICE_CHOWLA.md",
+      "notes": "All 7 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Completes 176 theorems + 147 helper lemmas = 323 verified declarations across 29 files in Waves 7-35. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W36-FAREY-ALIASING-SHARP",
+      "statement": "GoldbachWave36.geomExpSum_norm_le_inv_two_distToInt + farey_diff_fiber_card_le_gcd + sum_inv_two_min_mod_le_harmonic + farey_pair_geom_sum_bound + offDiagFareyForm_sharp_bound: proves exact fiber multiplicity <= gcd(q1, q2) for the Farey difference residue map mod lcm(q1, q2), exact constant-1 harmonic bound sum_{r=1}^{L-1} 1/(2*min(r,L-r)) <= H_{L/2}, sharp constant-1 pairwise Farey aliasing bound <= q1*q2*H_{lcm(q1,q2)/2}, and the sharp global Q^2 log Q aliasing bound ||offDiagFareyForm(n,Q,alpha,beta)|| <= H_{Q^2/2} * (sum q*|alpha_q|) * (sum q*|beta_q|), clearing Selberg Lambda_R * Lambda_R across all R < n^(1/2)/(log n)^B with zero integrals and zero Hilbert inequality",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/FareyAliasingSharpBound.lean; attack/audit/B013_W36_FAREY_ALIASING_SHARP_BOUND.md",
+      "notes": "All 5 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Completes 181 theorems + 155 helper lemmas = 336 verified declarations across 30 files in Waves 7-36. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W37-COTANGENT-HILBERT",
+      "statement": "GoldbachWave37.symmetrized_geom_kernel_eq_cot + offDiagFareyForm_re_eq_cotangent_hilbert + sin_cot_sum_eq_sawtooth_exact + eisenstein_cotangent_sum_exact: proves exact symmetrized real cotangent kernel identity, exact real Cotangent-Hilbert transform identity factoring 100% of the n-dependence of offDiagFareyForm(n,Q,alpha,alpha) outside the n-independent Farey-Hilbert transform H_Q[alpha], exact pure-integer sawtooth evaluation sum_{b=1}^{q-1} sin(2*pi*r*b/q)*cot(pi*b/q) = 0 if q|r else q - 2*(r%q), and Gauss-Eisenstein cotangent multiplication sum_{j<d} cot(pi*(x-j/d)) = d*cot(pi*d*x) from first principles",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/CotangentHilbertGoldbach.lean; attack/audit/B013_W37_COTANGENT_HILBERT_GOLDBACH.md",
+      "notes": "All 4 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Completes 185 theorems + 166 helper lemmas = 351 verified declarations across 31 files in Waves 7-37. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W38-PURE-INTEGER-SAWTOOTH",
+      "statement": "GoldbachWave38.crt_main_term_eq_ramanujan_diagonal + mod_count_exact_and_discrepancy_lt_one + crtDiscrepancy_abs_lt_one + pure_integer_goldbach_crt_ramanujan_identity + pure_integer_goldbach_error_le_l1_sq + puresquare_crt_count_zero_or_one: final capstone pure-integer CRT-Ramanujan-Discrepancy identity expressing sum_{x<n} F(x)*F(n-x) = n*sum_{q<=Q} alpha(q)^2*c_q(n) + sum_{m1,m2<=Q} w(m1)*w(m2)*crtDiscrepancy(n,m1,m2) with |crtDiscrepancy| < 1 (zero complex numbers, zero trig, zero integrals), immediate L1^2 error bound clearing Selberg Lambda_R to n^(1/2)/(log n)^B, and exact PureSquare {0,1}-count theorem isolating modular-hyperbola fractional-part discrepancy as the sole remaining barrier to pointwise Strong Goldbach",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/PureIntegerGoldbachSawtooth.lean; attack/audit/B013_W38_PURE_INTEGER_GOLDBACH_SAWTOOTH.md",
+      "notes": "All 6 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Completes final 32-file Lean formalization campaign (Waves 7-38). Strong Goldbach remains OPEN."
     }
   ]
 }
