@@ -1,6 +1,6 @@
 {
   "schema": "goldbach-attack/claims v1",
-  "updated_at": "2026-11-28T04:36:00Z",
+  "updated_at": "2026-11-28T04:54:00Z",
   "claims": [
     {
       "id": "GB-BINARY",
@@ -249,6 +249,22 @@
       "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
       "source": "attack/lean/Goldbach/AntiSymmetricEuler.lean; attack/audit/B013_W9_ANTISYMMETRIC_HYPERBOLA_BREAKTHROUGH.md",
       "notes": "All 10 theorems kernel-verified (exit 0, zero warnings, zero sorry, #print axioms strictly [propext, Classical.choice, Quot.sound]). Amplifies Wave 8 signal from Theta(n/log n) to full Theta(n), doubles sigma range to 2/log n, proves explicit P_pp bound, and isolates remaining open problem into LL_D > -0.80*n (non-o(n) threshold vs parity extreme -0.985*n). Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W10-THREE-REGION",
+      "statement": "GoldbachWave10.three_region_split + crtPairCount_approx + gcd_dvd_indicator_eq_sum_psi + regionII_bv_modulus_bound: exact 3-region hyperbola partition of bilateralDiff into Region I (d1*d2<=Y), Region II (d1*d2>Y & min(d1,d2)<=D), Region III (d1*d2>Y & d1,d2>D); elementary CRT bound |N_n^circ(d1,d2) - n/lcm(d1,d2)| <= 4; exact multiplicative psi_n(h) factorization of 1_{g|n}*g; and exact Region II BV modulus inequality q^2*(k2*h)*Y < D^3*n",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/ThreeRegionHyperbola.lean; attack/audit/B013_W10_THREE_REGION_HYPERBOLA_REDUCTION.md",
+      "notes": "All 5 theorems kernel-verified (exit 0, zero warnings, zero sorry, #print axioms strictly [propext, Classical.choice, Quot.sound]). Establishes the exact CRT + unconditional BV clearance architecture of Regions I & II (Y=n^0.95, D=n^0.30, Region I ~ 0.5821*S(n)*n >= +0.7686*n, Region II = o(n) via BV for mu), isolating Strong Goldbach into Region III > -0.70*n. Strong Goldbach remains OPEN."
+    },
+    {
+      "id": "GB-W11-REGION3-VAUGHAN-PARITY",
+      "statement": "GoldbachWave11.vaughan_moebius_identity + muTypeII_eq_bilinear_sum + regionIII_vaughan_split + parity_annihilates_antiSym_of_squarefree + parity_three_region_eq_nonSqfree_sum: exact Vaughan identity for mu, exact (IxI)+2(IxII)+(IIxII) decomposition of Region III, and exact Liouville parity annihilation (1 - lambda(x)lambda(n-x))*A_s(x)*A_s(n-x) = 0 on all squarefree pairs forcing parityRegI+parityRegII+parityRegIII to depend solely on non-squarefree pairs",
+      "status": "checked",
+      "hypothesis": "none (unconditional Lean 4.33.1 kernel check)",
+      "source": "attack/lean/Goldbach/RegionIIIParity.lean; attack/audit/B013_W11_REGION_III_VAUGHAN_PARITY.md",
+      "notes": "All 6 theorems kernel-verified (exit 0, zero warnings, zero banned tokens, #print axioms strictly [propext, Classical.choice, Quot.sound]). Quantitatively establishes that ~100% of the Region III parity gap lives in Vaughan's (Type II x Type II) bilinear block (+1.165n of +0.959n at n=50002) and proves breaking Liouville parity in Region III is both necessary and sufficient for the hyperbola criterion. Strong Goldbach remains OPEN."
     }
   ]
 }
